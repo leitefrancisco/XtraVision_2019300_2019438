@@ -8,14 +8,13 @@ package xtravision_2019300_2019438;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
+ * 
  */
 public class XtraVision_2019300_2019438 {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }
