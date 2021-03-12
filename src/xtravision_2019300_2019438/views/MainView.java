@@ -5,17 +5,20 @@
  */
 package xtravision_2019300_2019438.views;
 
+import xtravision_2019300_2019438.controllers.MainViewController;
+
 /**
  *
  * @author Francisco Leite
  */
 public class MainView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainView
-     */
+    
+        
+    MainViewController controller = new MainViewController();
     public MainView() {
         initComponents();
+        
     }
 
     /**
@@ -110,18 +113,16 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
-        RentView rv = new RentView();
-        desk.add(rv);
-        rv.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     ReturnView retv = new ReturnView();
-     this.dispose();
-     retv.setVisible(true);
+        ReturnView retv = new ReturnView();
+        this.dispose();
+        retv.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+      
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
