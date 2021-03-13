@@ -28,7 +28,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        topPanel = new javax.swing.JPanel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         desktopRent = new javax.swing.JDesktopPane();
@@ -37,6 +37,8 @@ public class CartFrame extends javax.swing.JInternalFrame {
         setBorder(null);
         setTitle("Cart");
         setMaximumSize(new java.awt.Dimension(900, 600));
+        setMinimumSize(new java.awt.Dimension(900, 600));
+        setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(900, 600));
         setVerifyInputWhenFocusTarget(false);
 
@@ -44,20 +46,20 @@ public class CartFrame extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Welcome User01");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                 .addContainerGap(508, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(160, 160, 160)
                 .addComponent(logoutBtn)
                 .addGap(32, 32, 32))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(logoutBtn)
                 .addComponent(jLabel1))
         );
@@ -80,7 +82,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
             .addGroup(desktopRentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backBtn)
-                .addContainerGap(818, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         desktopRentLayout.setVerticalGroup(
             desktopRentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,13 +96,13 @@ public class CartFrame extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(desktopRent)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(desktopRent))
         );
@@ -116,7 +118,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JDesktopPane desktopRent;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }

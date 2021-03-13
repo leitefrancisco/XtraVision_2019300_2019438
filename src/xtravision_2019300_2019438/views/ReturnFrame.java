@@ -28,6 +28,14 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         backBtn = new javax.swing.JButton();
+        topPanel = new javax.swing.JPanel();
+        cartBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setTitle("Return");
+        setMaximumSize(new java.awt.Dimension(900, 600));
+        setPreferredSize(new java.awt.Dimension(900, 600));
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -36,6 +44,38 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        cartBtn.setText("Cart");
+        cartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cartBtnActionPerformed(evt);
+            }
+        });
+
+        logoutBtn.setText("Logout");
+
+        jLabel1.setText("Welcome User01");
+
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+                .addContainerGap(492, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(90, 90, 90)
+                .addComponent(cartBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutBtn)
+                .addGap(32, 32, 32))
+        );
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(cartBtn)
+                .addComponent(logoutBtn)
+                .addComponent(jLabel1))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -43,14 +83,16 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backBtn)
-                .addContainerGap(1197, Short.MAX_VALUE))
+                .addContainerGap(804, Short.MAX_VALUE))
+            .addComponent(topPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(588, Short.MAX_VALUE)
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
                 .addComponent(backBtn)
-                .addGap(83, 83, 83))
+                .addContainerGap())
         );
 
         pack();
@@ -58,9 +100,19 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         this.setVisible(false);    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void cartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cartBtnActionPerformed
+        CartFrame cartF = new CartFrame();
+        
+        cartF.setVisible(true);
+    }//GEN-LAST:event_cartBtnActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton cartBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }

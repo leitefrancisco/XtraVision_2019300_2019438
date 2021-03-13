@@ -11,6 +11,7 @@ package xtravision_2019300_2019438.views;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form MainFrame
      */
@@ -30,7 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         rentBtn = new javax.swing.JButton();
         returnBtn = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        topPanel = new javax.swing.JPanel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cartBtn = new javax.swing.JButton();
@@ -66,11 +67,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(81, 81, 81)
@@ -79,9 +80,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(logoutBtn)
                 .addGap(32, 32, 32))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(logoutBtn)
                 .addComponent(jLabel1)
                 .addComponent(cartBtn))
@@ -89,13 +90,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         desktop.setLayer(rentBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
         desktop.setLayer(returnBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(topPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopLayout.createSequentialGroup()
                 .addContainerGap(226, Short.MAX_VALUE)
                 .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -106,7 +107,7 @@ public class MainFrame extends javax.swing.JFrame {
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(rentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
@@ -131,7 +132,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void rentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentBtnActionPerformed
         RentFrame rentF = new RentFrame();
         desktop.add(rentF);
-        rentF.setVisible(true);
+        rentF.setVisible(true);    
     }//GEN-LAST:event_rentBtnActionPerformed
 
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
@@ -185,10 +186,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton cartBtn;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton rentBtn;
     private javax.swing.JButton returnBtn;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 
     
