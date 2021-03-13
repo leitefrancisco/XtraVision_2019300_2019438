@@ -41,14 +41,16 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(backBtn)
-                .addGap(0, 1212, Short.MAX_VALUE))
+                .addContainerGap(1197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 667, Short.MAX_VALUE)
-                .addComponent(backBtn))
+                .addContainerGap(588, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addGap(83, 83, 83))
         );
 
         pack();
