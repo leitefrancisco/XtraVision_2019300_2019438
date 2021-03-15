@@ -5,6 +5,9 @@
  */
 package xtravision_2019300_2019438.models;
 
+import com.mysql.cj.protocol.Resultset;
+import xtravision_2019300_2019438.database.Database;
+
 /**
  *
  * @author Francisco Leite
@@ -19,7 +22,6 @@ public class Movie {
     private String synopsis;
     
     
-    
-    
+ 
     
 }
