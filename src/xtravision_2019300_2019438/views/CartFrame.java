@@ -9,16 +9,15 @@ package xtravision_2019300_2019438.views;
  *
  * @author aline
  */
-public class RentFrame extends javax.swing.JInternalFrame {
+public class CartFrame extends javax.swing.JInternalFrame {
 
     private MainFrame mF;
-    
     /**
-     * Creates new form RentFrame
+     * Creates new form CartFrame
      */
-    public RentFrame(MainFrame mf) {
+    public CartFrame(MainFrame mf) {
         this.mF = mf;
-        initComponents();    
+        initComponents();
     }
 
     /**

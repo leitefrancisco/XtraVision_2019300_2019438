@@ -55,6 +55,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setText("Welcome!");
 
         btnCart.setText("Cart");
+        btnCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,6 +96,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartActionPerformed
+       this.showCartFrame();
+    }//GEN-LAST:event_btnCartActionPerformed
     private void showWindow(javax.swing.JInternalFrame window){
         this.desktopPane.removeAll();
         window.setVisible(true);
@@ -103,8 +112,17 @@ public class MainFrame extends javax.swing.JFrame {
         }
         
     }
+    
     public void showRentFrame(){
             showWindow(new RentFrame(this));
+    }
+    
+    public void showReturnFrame(){
+            showWindow(new ReturnFrame(this));
+    }
+    
+    public void showCartFrame(){
+            showWindow(new CartFrame(this));
     }
     
     
@@ -157,4 +175,6 @@ public class MainFrame extends javax.swing.JFrame {
     public void showFirstFrame() {
         showWindow(new FirstFrame(this));
     }
+
+
 }

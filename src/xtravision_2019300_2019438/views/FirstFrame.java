@@ -40,6 +40,11 @@ public class FirstFrame extends javax.swing.JInternalFrame {
         });
 
         btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,6 +74,11 @@ public class FirstFrame extends javax.swing.JInternalFrame {
         this.mF.showRentFrame();
     }//GEN-LAST:event_btnRentActionPerformed
 
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+       this.mF.showReturnFrame();
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRent;

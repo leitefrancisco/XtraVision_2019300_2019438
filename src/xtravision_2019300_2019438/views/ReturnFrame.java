@@ -9,17 +9,17 @@ package xtravision_2019300_2019438.views;
  *
  * @author aline
  */
-public class RentFrame extends javax.swing.JInternalFrame {
+public class ReturnFrame extends javax.swing.JInternalFrame {
 
-    private MainFrame mF;
-    
+     private MainFrame mF;
     /**
-     * Creates new form RentFrame
+     * Creates new form ReturnFrame
      */
-    public RentFrame(MainFrame mf) {
+    public ReturnFrame(MainFrame mf) {
         this.mF = mf;
-        initComponents();    
+        initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +63,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
         mF.showFirstFrame();
     }//GEN-LAST:event_btnBackActionPerformed
 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
