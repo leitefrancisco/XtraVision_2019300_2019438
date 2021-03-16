@@ -19,19 +19,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="paneMovies" max="32767" attributes="0"/>
                   <Component id="panelSeach" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="paneMovies" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnCheckout" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="694" max="-2" attributes="0"/>
+                      <Component id="btnCheckout" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -44,9 +40,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelSeach" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="paneMovies" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="paneMovies" min="-2" pref="474" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCheckout" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -152,25 +148,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="paneMovies">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="824" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="487" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
     <Component class="javax.swing.JButton" name="btnCheckout">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Advance"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="paneMovies">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    </Container>
   </SubComponents>
 </Form>

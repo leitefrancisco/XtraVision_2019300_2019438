@@ -6,8 +6,6 @@
 package xtravision_2019300_2019438.views;
 
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import xtravision_2019300_2019438.controllers.MovieController;
 import xtravision_2019300_2019438.models.Movie;
 
@@ -45,11 +43,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
         panelSeach = new javax.swing.JPanel();
         titleSearchTextBox = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        lblSearchTitle = new javax.swing.JLabel();
+        javax.swing.JLabel lblSearchTitle = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        paneMovies = new javax.swing.JPanel();
         btnCheckout = new javax.swing.JButton();
+        paneMovies = new javax.swing.JScrollPane();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -109,34 +107,21 @@ public class RentFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)))
         );
 
-        javax.swing.GroupLayout paneMoviesLayout = new javax.swing.GroupLayout(paneMovies);
-        paneMovies.setLayout(paneMoviesLayout);
-        paneMoviesLayout.setHorizontalGroup(
-            paneMoviesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 824, Short.MAX_VALUE)
-        );
-        paneMoviesLayout.setVerticalGroup(
-            paneMoviesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
-        );
-
-        btnCheckout.setText("jButton1");
+        btnCheckout.setText("Advance");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelSeach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(paneMovies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCheckout)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(paneMovies)
+                    .addComponent(panelSeach, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(694, 694, 694)
+                        .addComponent(btnCheckout)
                         .addGap(0, 25, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -145,9 +130,9 @@ public class RentFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelSeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneMovies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(paneMovies, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnCheckout))
@@ -178,8 +163,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblSearchTitle;
-    private javax.swing.JPanel paneMovies;
+    private javax.swing.JScrollPane paneMovies;
     private javax.swing.JPanel panelSeach;
     private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
@@ -194,7 +178,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
         for(int i = 0; i<movies.length;i++){
             Movie movie = movies[i];
             JLabel lbl = new JLabel("Title: "+movie.getTitle()+"\nGenre :"+movie.getGenre()+"\n\tDirector: "+ movie.getDirector());
-            
+            System.out.println(lbl);
             paneMovies.add(lbl);
             
         }
