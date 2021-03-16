@@ -1,26 +1,37 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package xtravision_2019300_2019438.views;
+
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import xtravision_2019300_2019438.controllers.MovieController;
+import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
  * @author aline
  */
 public class RentFrame extends javax.swing.JInternalFrame {
-
+    
     private MainFrame mF;
     
     /**
      * Creates new form RentFrame
      */
+    
+    
     public RentFrame(MainFrame mf) {
         this.mF = mf;
-        initComponents();    
+        initComponents();
+        showAllMovies(new MovieController().getMovies());
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,12 +42,14 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
-        searchPanel = new javax.swing.JPanel();
+        panelSeach = new javax.swing.JPanel();
         titleSearchTextBox = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        javax.swing.JLabel lblSearchTitle = new javax.swing.JLabel();
+        lblSearchTitle = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        paneMovies = new javax.swing.JPanel();
+        btnCheckout = new javax.swing.JButton();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -53,19 +66,24 @@ public class RentFrame extends javax.swing.JInternalFrame {
         });
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         lblSearchTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSearchTitle.setText("Title:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Genre");
 
-        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
-        searchPanel.setLayout(searchPanelLayout);
-        searchPanelLayout.setHorizontalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelSeachLayout = new javax.swing.GroupLayout(panelSeach);
+        panelSeach.setLayout(panelSeachLayout);
+        panelSeachLayout.setHorizontalGroup(
+            panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeachLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblSearchTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -74,22 +92,35 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addComponent(btnSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157))
+                .addGap(64, 64, 64))
         );
-        searchPanelLayout.setVerticalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        panelSeachLayout.setVerticalGroup(
+            panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(titleSearchTextBox)
                 .addComponent(lblSearchTitle))
-            .addGroup(searchPanelLayout.createSequentialGroup()
+            .addGroup(panelSeachLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)))
         );
+
+        javax.swing.GroupLayout paneMoviesLayout = new javax.swing.GroupLayout(paneMovies);
+        paneMovies.setLayout(paneMoviesLayout);
+        paneMoviesLayout.setHorizontalGroup(
+            paneMoviesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 824, Short.MAX_VALUE)
+        );
+        paneMoviesLayout.setVerticalGroup(
+            paneMoviesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 487, Short.MAX_VALUE)
+        );
+
+        btnCheckout.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,37 +128,75 @@ public class RentFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnBack)
-                .addContainerGap(804, Short.MAX_VALUE))
-            .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelSeach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(paneMovies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCheckout)))
+                        .addGap(0, 25, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
-                .addComponent(btnBack)
+                .addContainerGap()
+                .addComponent(panelSeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paneMovies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(btnCheckout))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mF.showFirstFrame();
+        
+        
     }//GEN-LAST:event_btnBackActionPerformed
-
+    
     private void titleSearchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleSearchTextBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
 
-
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       
+    }//GEN-LAST:event_btnSearchActionPerformed
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel searchPanel;
+    private javax.swing.JLabel lblSearchTitle;
+    private javax.swing.JPanel paneMovies;
+    private javax.swing.JPanel panelSeach;
     private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
+
+    public String getTitleSearchTextBox() {
+        return titleSearchTextBox.getText();
+    }
+    
+    
+    
+    public void showAllMovies(Movie[]movies){
+        for(int i = 0; i<movies.length;i++){
+            Movie movie = movies[i];
+            JLabel lbl = new JLabel("Title: "+movie.getTitle()+"\nGenre :"+movie.getGenre()+"\n\tDirector: "+ movie.getDirector());
+            
+            paneMovies.add(lbl);
+            
+        }
+    }
 }
