@@ -98,12 +98,23 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartActionPerformed
-       this.showCartFrame();
+       this.showCartFrame(true);
     }//GEN-LAST:event_btnCartActionPerformed
     private void showWindow(javax.swing.JInternalFrame window){
         this.desktopPane.removeAll();
         window.setVisible(true);
         window.setClosable(false);
+        this.desktopPane.add(window);
+        try {
+            window.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    private void showClosableWindow(javax.swing.JInternalFrame window){
+        window.setVisible(true);
+        window.setClosable(true);
         this.desktopPane.add(window);
         try {
             window.setMaximum(true);
@@ -121,8 +132,14 @@ public class MainFrame extends javax.swing.JFrame {
             showWindow(new ReturnFrame(this));
     }
     
-    public void showCartFrame(){
-            showWindow(new CartFrame(this));
+    public void showCartFrame(Boolean closable){
+        CartFrame cf = new CartFrame(this);
+                if(closable){
+                    showClosableWindow(cf);
+                }else{
+                    showWindow(cf);
+                }
+            
     }
     
     

@@ -31,6 +31,12 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
+        searchPanel = new javax.swing.JPanel();
+        titleSearchTextBox = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        javax.swing.JLabel lblSearchTitle = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -38,6 +44,52 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 btnBackActionPerformed(evt);
             }
         });
+
+        titleSearchTextBox.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        titleSearchTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleSearchTextBoxActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setText("Search");
+
+        lblSearchTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSearchTitle.setText("Title:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblSearchTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titleSearchTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(157, 157, 157))
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(titleSearchTextBox)
+                .addComponent(lblSearchTitle))
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,11 +99,13 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnBack)
                 .addContainerGap(804, Short.MAX_VALUE))
+            .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(514, Short.MAX_VALUE)
+                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 494, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -63,8 +117,17 @@ public class RentFrame extends javax.swing.JInternalFrame {
         mF.showFirstFrame();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void titleSearchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleSearchTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleSearchTextBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
 }
