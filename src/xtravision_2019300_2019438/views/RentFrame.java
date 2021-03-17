@@ -25,7 +25,8 @@ public class RentFrame extends javax.swing.JInternalFrame {
     public RentFrame(MainFrame mf) {
         this.mF = mf;
         initComponents();
-        showAllMovies(new MovieController().getMovies());
+        
+
     }
 
     
@@ -44,10 +45,29 @@ public class RentFrame extends javax.swing.JInternalFrame {
         titleSearchTextBox = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         javax.swing.JLabel lblSearchTitle = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboBoxGenres = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         btnCheckout = new javax.swing.JButton();
         paneMovies = new javax.swing.JScrollPane();
+        tableMovies = new javax.swing.JTable();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +93,12 @@ public class RentFrame extends javax.swing.JInternalFrame {
         lblSearchTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSearchTitle.setText("Title:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxGenres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxGenresActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Genre");
 
@@ -91,7 +116,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
         panelSeachLayout.setVerticalGroup(
@@ -103,11 +128,21 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addGap(1, 1, 1)
                 .addGroup(panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)))
         );
 
         btnCheckout.setText("Advance");
+
+        tableMovies.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        paneMovies.setViewportView(tableMovies);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,18 +188,29 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-       
+        showMoviesByTitle();
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        showAllMovies(new MovieController().getMovies());        
+        //        showGenres();
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
+           String selectedGenre = (String) comboBoxGenres.getSelectedItem();
+//           getMoviesByGenre(selectedGenre);
+    }//GEN-LAST:event_comboBoxGenresActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox comboBoxGenres;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane paneMovies;
     private javax.swing.JPanel panelSeach;
+    private javax.swing.JTable tableMovies;
     private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
 
@@ -174,13 +220,31 @@ public class RentFrame extends javax.swing.JInternalFrame {
     
     
     
-    public void showAllMovies(Movie[]movies){
-        for(int i = 0; i<movies.length;i++){
-            Movie movie = movies[i];
-            JLabel lbl = new JLabel("Title: "+movie.getTitle()+"\nGenre :"+movie.getGenre()+"\n\tDirector: "+ movie.getDirector());
-            System.out.println(lbl);
-            paneMovies.add(lbl);
-            
-        }
+    public void showGenres(){
+//           GenreController gc = new GenreController();
+//           String[] genresNameInDb = gc.getGenreNames();
+//           comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(genresNameInDb));
+           
     }
+    public void showAllMovies(Movie[] movies){
+
+       MoviesTableModel model = new MoviesTableModel(movies);
+       tableMovies.setModel(model);
+    }
+    public void showMoviesByTitle (){
+        MovieController controller = new MovieController();
+        Movie[] movies = controller.getMoviesByTitle(getTitleSearchTextBox());
+        MoviesTableModel model = new MoviesTableModel(movies);
+        tableMovies.setModel(model);
+    }
+    
+//    private void filterMovies(){
+//        String genre = this.getSelectedGenre();
+//        String title = this.getFilterTitle();
+//        MovieController c = new MovieController();
+//         Movie[] movies = controller.getFilteredMovies(title, genre);
+//        MoviesTableModel model = new MoviesTableModel(movies);
+//        tableMovies.setModel(model);
+//    }
+    
 }

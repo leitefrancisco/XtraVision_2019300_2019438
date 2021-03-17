@@ -5,8 +5,11 @@
 */
 package xtravision_2019300_2019438.controllers;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Movie;
-import xtravision_2019300_2019438.views.RentFrame;
 
 /**
  *
@@ -14,20 +17,60 @@ import xtravision_2019300_2019438.views.RentFrame;
  */
 public class MovieController{
     
-    public Movie[] getMovies(){
-        Movie [] movies = new Movie().getMoviesFromDB();
-        return movies;
+    private Movie[] getMoviesFromQuery(String query){
+        ArrayList<Movie> movies = new ArrayList<>();
+        try{
+            Database db = new Database();
+            ResultSet rs = db.executeQuery(query);
+            
+            while(rs.next())
+            {
+                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6));
+                movies.add(movie);
+            }
+            db.close();
+        }
+        catch (SQLException se) {
+            System.out.println("SQL Exception:");
+            
+            // Loop through the SQL Exceptions
+            while (se != null) {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+                
+                se = se.getNextException();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            
+        }
+        
+        return movies.toArray(new Movie[movies.size()]);
     }
     
+    public Movie[] getMovies(){
+        
+        String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis from xtra_movie m\n" +
+                "join xtra_genre g \n" +
+                "on m.genre_id = g.id\n" +
+                "order by title;";
+        
+        return getMoviesFromQuery(query);
+        
+    }
     
-//    public Movie[] getMoviesbyTitle(){
-//        
-//        Movie[] movies = new Movie().getMoviesByTitle();
-//        
-//        return movies;
-//        
-//    }
-    
+    public Movie[] getMoviesByTitle(String title) {
+        
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis "
+                + "from xtra_movie m \n"
+                + "join xtra_genre g \n"
+                + "on m.genre_id = g.id \n"
+                + "where title like '%" + title+ "%'\n"
+                + "order by title;";
+        
+        return getMoviesFromQuery(query);
+    }
     
     
     
