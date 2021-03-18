@@ -5,11 +5,7 @@
  */
 package xtravision_2019300_2019438.models;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import xtravision_2019300_2019438.database.Database;
 
 /**
  *

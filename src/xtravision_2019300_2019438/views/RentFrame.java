@@ -6,7 +6,9 @@
 package xtravision_2019300_2019438.views;
 
 import javax.swing.JLabel;
+import xtravision_2019300_2019438.controllers.GenreController;
 import xtravision_2019300_2019438.controllers.MovieController;
+import xtravision_2019300_2019438.models.Genre;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
@@ -26,9 +28,9 @@ public class RentFrame extends javax.swing.JInternalFrame {
         this.mF = mf;
         initComponents();
         
-
+        
     }
-
+    
     
     
     /**
@@ -47,6 +49,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
         javax.swing.JLabel lblSearchTitle = new javax.swing.JLabel();
         comboBoxGenres = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
         btnCheckout = new javax.swing.JButton();
         paneMovies = new javax.swing.JScrollPane();
         tableMovies = new javax.swing.JTable();
@@ -102,6 +105,13 @@ public class RentFrame extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Genre");
 
+        btnClear.setText("Clear Filters");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelSeachLayout = new javax.swing.GroupLayout(panelSeach);
         panelSeach.setLayout(panelSeachLayout);
         panelSeachLayout.setHorizontalGroup(
@@ -113,11 +123,13 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addComponent(titleSearchTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClear)
+                .addGap(31, 31, 31))
         );
         panelSeachLayout.setVerticalGroup(
             panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +141,8 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addGroup(panelSeachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)))
+                    .addComponent(jLabel1)
+                    .addComponent(btnClear)))
         );
 
         btnCheckout.setText("Advance");
@@ -179,32 +192,40 @@ public class RentFrame extends javax.swing.JInternalFrame {
     
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mF.showFirstFrame();
-        
-        
     }//GEN-LAST:event_btnBackActionPerformed
     
     private void titleSearchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleSearchTextBoxActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
-
+    
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         showMoviesByTitle();
+        
     }//GEN-LAST:event_btnSearchActionPerformed
-
+    
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        showAllMovies(new MovieController().getMovies());        
-        //        showGenres();
+        showAllMovies(new MovieController().getMovies());
+        showGenres();
     }//GEN-LAST:event_formInternalFrameOpened
-
+    
     private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
-           String selectedGenre = (String) comboBoxGenres.getSelectedItem();
-//           getMoviesByGenre(selectedGenre);
+        String selectedGenre = (String) comboBoxGenres.getSelectedItem();
+        if(selectedGenre.equals("Select Genre")){
+            
+        }else{
+            showMoviesByGenre(selectedGenre);
+        }
     }//GEN-LAST:event_comboBoxGenresActionPerformed
+    
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        showAllMovies(new MovieController().getMovies());
+    }//GEN-LAST:event_btnClearActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckout;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox comboBoxGenres;
     private javax.swing.JLabel jLabel1;
@@ -213,27 +234,29 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTable tableMovies;
     private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
-
+    
     public String getTitleSearchTextBox() {
         return titleSearchTextBox.getText();
     }
     
-    
-    
     public void showGenres(){
-//           GenreController gc = new GenreController();
-//           String[] genresNameInDb = gc.getGenreNames();
-//           comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(genresNameInDb));
-           
+        GenreController controller = new GenreController();
+        String[] genresNameInDb = controller.getGenres();
+        comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(genresNameInDb));
     }
     public void showAllMovies(Movie[] movies){
-
-       MoviesTableModel model = new MoviesTableModel(movies);
-       tableMovies.setModel(model);
+        MoviesTableModel model = new MoviesTableModel(movies);
+        tableMovies.setModel(model);
     }
     public void showMoviesByTitle (){
         MovieController controller = new MovieController();
         Movie[] movies = controller.getMoviesByTitle(getTitleSearchTextBox());
+        MoviesTableModel model = new MoviesTableModel(movies);
+        tableMovies.setModel(model);
+    }
+    public void showMoviesByGenre(String selectedGenre){
+        MovieController controller = new MovieController();
+        Movie[] movies = controller.getMoviesByGenre(selectedGenre);
         MoviesTableModel model = new MoviesTableModel(movies);
         tableMovies.setModel(model);
     }
@@ -246,5 +269,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
 //        MoviesTableModel model = new MoviesTableModel(movies);
 //        tableMovies.setModel(model);
 //    }
+    
+    
     
 }
