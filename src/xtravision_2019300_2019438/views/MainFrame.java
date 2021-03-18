@@ -142,6 +142,10 @@ public class MainFrame extends javax.swing.JFrame {
             
     }
     
+    public void showPaymentFrame(){
+            showWindow(new PaymentFrame(this));
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -191,6 +195,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void showFirstFrame() {
         showWindow(new FirstFrame(this));
+    }
+
+    void showCartFrame() {
+        showWindow(new CartFrame(this));
     }
 
 
