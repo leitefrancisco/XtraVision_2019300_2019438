@@ -15,7 +15,7 @@ import xtravision_2019300_2019438.models.Movie;
 public class MoviesTableModel extends AbstractTableModel {
     //https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data
     
-    private String[] columnNames = {"Title","Genre","Director"};
+    private String[] columnNames = {"Front","Title","Genre","Director"};
     private Movie[ ] movies;
 
     public MoviesTableModel( Movie[] movies) {
@@ -49,14 +49,18 @@ public class MoviesTableModel extends AbstractTableModel {
         Movie movie = movies[rowIndex];
         switch (columnIndex){
             case 0: {
-                return movie.getTitle();
+                return movie.getLabel();
             }
             case 1:{
-                return movie.getGenre();
+                return movie.getTitle();
             }
             case 2:{
+                return movie.getGenre();
+            }
+            case 3:{
                 return movie.getDirector();
             }
+            
             
         }
         return null;

@@ -6,6 +6,7 @@
 package xtravision_2019300_2019438.models;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,22 +20,24 @@ public class Movie {
     private String Director;
     private int year;
     private String synopsis;
-    private ImageIcon image;    
+    private ImageIcon image;
+
+   
+    private JLabel label;
 
     public Movie() {
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" + "id=" + id + ", title=" + title + ", genre=" + genre + ", Director=" + Director + ", year=" + year + ", synopsis=" + synopsis + ", image=" + image + '}';
-    }
-    public Movie(int id, String title, String genre, String Director, int year, String synopsis) {
+   
+    public Movie(int id, String title, String genre, String Director, int year, String synopsis,JLabel label) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.Director = Director;
         this.year = year;
         this.synopsis = synopsis;
+        this.label = label;
+        
     }
 
     public int getId() {
@@ -88,13 +91,18 @@ public class Movie {
     public ImageIcon getImage() {
         return image;
     }
-
     public void setImage(ImageIcon image) {
         this.image = image;
     }
 
     
-    
+     public JLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
     
     
  

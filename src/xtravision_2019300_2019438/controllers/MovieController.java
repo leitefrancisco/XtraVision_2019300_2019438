@@ -5,9 +5,12 @@
 */
 package xtravision_2019300_2019438.controllers;
 
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Movie;
 
@@ -25,7 +28,10 @@ public class MovieController{
             
             while(rs.next())
             {
-                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6));
+                JLabel image = new JLabel();
+                image.setIcon(new ImageIcon(rs.getBytes(7)));
+                
+                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),image);
                 movies.add(movie);
             }
             db.close();
@@ -50,7 +56,7 @@ public class MovieController{
     
     public Movie[] getMovies(){
         
-        String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis from xtra_movie m\n" +
+        String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image from xtra_movie m\n" +
                 "join xtra_genre g \n" +
                 "on m.genre_id = g.id\n" +
                 "order by title;";
@@ -60,7 +66,7 @@ public class MovieController{
     
     public Movie[] getMoviesByTitle(String title) {
         
-        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis "
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
@@ -71,7 +77,7 @@ public class MovieController{
     }
 
     public Movie[] getMoviesByGenre(String selectedGenre) {
-        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis "
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
