@@ -17,6 +17,7 @@ public class MoviesTableModel extends AbstractTableModel {
     
     private String[] columnNames = {"Front","Title","Genre","Director"};
     private Movie[ ] movies;
+    
 
     public MoviesTableModel( Movie[] movies) {
         this.movies = movies;
@@ -31,8 +32,6 @@ public class MoviesTableModel extends AbstractTableModel {
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
-    
-    
     
     @Override
     public int getRowCount() {
@@ -49,7 +48,7 @@ public class MoviesTableModel extends AbstractTableModel {
         Movie movie = movies[rowIndex];
         switch (columnIndex){
             case 0: {
-                return movie.getLabel();
+                return movie;
             }
             case 1:{
                 return movie.getTitle();
@@ -60,8 +59,9 @@ public class MoviesTableModel extends AbstractTableModel {
             case 3:{
                 return movie.getDirector();
             }
-            
-            
+            case 100:{
+                return movie.getId();
+            }
         }
         return null;
     }

@@ -5,12 +5,9 @@
 */
 package xtravision_2019300_2019438.controllers;
 
-import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Movie;
 
@@ -28,10 +25,7 @@ public class MovieController{
             
             while(rs.next())
             {
-                JLabel image = new JLabel();
-                image.setIcon(new ImageIcon(rs.getBytes(7)));
-                
-                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),image);
+                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),rs.getBytes(7));
                 movies.add(movie);
             }
             db.close();
@@ -49,7 +43,6 @@ public class MovieController{
             }
         } catch (Exception e) {
             System.out.println(e);
-            
         }
         return movies.toArray(new Movie[movies.size()]);
     }

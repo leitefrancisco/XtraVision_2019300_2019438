@@ -203,5 +203,10 @@ public class MainFrame extends javax.swing.JFrame {
         showWindow(new CartFrame(this));
     }
 
+    void showMovieDetails(int id) {
+        
+        showWindow(new MovieDetailFrame(this,id));
+    }
+
 
 }

@@ -155,6 +155,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
 
             }
         ));
+        tableMovies.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMoviesMouseClicked(evt);
+            }
+        });
         paneMovies.setViewportView(tableMovies);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,7 +216,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
         String selectedGenre = (String) comboBoxGenres.getSelectedItem();
         if(selectedGenre.equals("Select Genre")){
-            
+            showAllMovies(new MovieController().getMovies());
         }else{
             showMoviesByGenre(selectedGenre);
         }
@@ -220,6 +225,12 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         showAllMovies(new MovieController().getMovies());
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void tableMoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMoviesMouseClicked
+        int row = tableMovies.getSelectedRow();
+        Movie movie = (Movie) tableMovies.getValueAt(row, 0);
+        mF.showMovieDetails(movie.getId());
+    }//GEN-LAST:event_tableMoviesMouseClicked
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -238,6 +249,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
     public String getTitleSearchTextBox() {
         return titleSearchTextBox.getText();
     }
+    private void setTableModel(MoviesTableModel model){
+        tableMovies.setModel(model);
+        tableMovies.setRowHeight(80);
+        tableMovies.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+    }
     
     public void showGenres(){
         GenreController controller = new GenreController();
@@ -246,19 +262,20 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }
     public void showAllMovies(Movie[] movies){
         MoviesTableModel model = new MoviesTableModel(movies);
-        tableMovies.setModel(model);
+        setTableModel(model);
+        
     }
     public void showMoviesByTitle (){
         MovieController controller = new MovieController();
         Movie[] movies = controller.getMoviesByTitle(getTitleSearchTextBox());
         MoviesTableModel model = new MoviesTableModel(movies);
-        tableMovies.setModel(model);
+        setTableModel(model);
     }
     public void showMoviesByGenre(String selectedGenre){
         MovieController controller = new MovieController();
         Movie[] movies = controller.getMoviesByGenre(selectedGenre);
         MoviesTableModel model = new MoviesTableModel(movies);
-        tableMovies.setModel(model);
+       setTableModel(model);
     }
     
 //    private void filterMovies(){

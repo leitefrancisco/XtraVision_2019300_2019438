@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xtravision_2019300_2019438.models;
+package xtravision_2019300_2019438.views;
 
 import java.awt.Component;
 import java.sql.ResultSet;
@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
@@ -18,26 +19,25 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class ImageRenderer extends DefaultTableCellRenderer {
     //https://www.daniweb.com/programming/software-development/threads/447192/trying-to-show-image-from-mysql-to-jtable
-    ImageIcon format;
-        ResultSet rs;
-        public ImageRenderer(ResultSet rs1)
-        {
-            rs=rs1;
-        }
+ 
+    ImageRenderer() {
+        
+    }
         @Override
-        public Component getTableCellRendererComponent(JTable table,Object value, boolean isSelected,boolean hasFocus, int row, int column)
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,boolean hasFocus, int row, int column)
         {  
+            Movie movie = (Movie) value;
             JLabel label = new JLabel();
             try{
-                byte[] imagedata=rs.getBytes(4);
-                format=new ImageIcon(imagedata);
                 if (value!=null) {
                     label.setHorizontalAlignment(JLabel.CENTER);
                     //value is parameter which filled by byteOfImage
-                    label.setIcon(format);
+                    label.setIcon(new ImageIcon((byte[])movie.getImage()));
                 }       
             }
-            catch(Exception ex){}
+            catch(Exception ex){
+                System.out.println(ex.toString());
+            }
             return label;
         }
     

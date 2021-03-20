@@ -75,7 +75,8 @@ public class CartFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPaymentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.mF.showRentFrame();
+//        this.mF.showRentFrame();
+        this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
 
