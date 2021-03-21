@@ -34,21 +34,9 @@ public class PaymentController  {
     
     Payment pM = new Payment(cardNumber, cardName, month, year, securityNumber, loyaltyNumber);
        
-    public void actionPerformed(ActionEvent e) {
-        
-        if(e.getActionCommand().equals("Pay")){
-            
-            if(paymentModel.equals(e)){
-                JOptionPane.showMessageDialog(paymentFrame, "Please fill all the field with valid credencials");
-            }
-            
-            else{
-                JOptionPane.showMessageDialog(paymentFrame, "Payment Success!"); 
-            }
-           
-        }
+    
          
-    }
+    
      
    
 }

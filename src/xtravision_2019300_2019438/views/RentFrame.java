@@ -5,10 +5,8 @@
 */
 package xtravision_2019300_2019438.views;
 
-import javax.swing.JLabel;
 import xtravision_2019300_2019438.controllers.GenreController;
 import xtravision_2019300_2019438.controllers.MovieController;
-import xtravision_2019300_2019438.models.Genre;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
@@ -175,7 +173,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
                         .addComponent(btnBack)
                         .addGap(694, 694, 694)
                         .addComponent(btnCheckout)
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

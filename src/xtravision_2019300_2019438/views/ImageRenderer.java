@@ -6,7 +6,6 @@
 package xtravision_2019300_2019438.views;
 
 import java.awt.Component;
-import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
