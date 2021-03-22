@@ -5,6 +5,8 @@
  */
 package xtravision_2019300_2019438.views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aline
@@ -12,6 +14,7 @@ package xtravision_2019300_2019438.views;
 public class ReturnFrame extends javax.swing.JInternalFrame {
 
      private MainFrame mF;
+
     /**
      * Creates new form ReturnFrame
      */
@@ -31,6 +34,10 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
+        labelReturnInstructions = new javax.swing.JLabel();
+        textFieldRentNumber = new javax.swing.JTextField();
+        btnReturnMovie = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -39,19 +46,59 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        labelReturnInstructions.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        labelReturnInstructions.setText("Please Insert your Rent Number to return the Movie");
+
+        textFieldRentNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldRentNumberActionPerformed(evt);
+            }
+        });
+
+        btnReturnMovie.setText("Return Movie");
+        btnReturnMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnMovieActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel1.setText("If you have more than one movie, please return one at  a time");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addContainerGap(804, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(textFieldRentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnReturnMovie))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(labelReturnInstructions))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel1)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(514, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addComponent(labelReturnInstructions)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(120, 120, 120)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturnMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldRentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -63,9 +110,32 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         mF.showFirstFrame();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnReturnMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnMovieActionPerformed
+        evt.getActionCommand().equals(btnReturnMovie);
+        int n = JOptionPane.showConfirmDialog(this, 
+                    "Would you like to Return this Movie?" , 
+                    "Return Movie", 
+                    JOptionPane.YES_NO_OPTION);
+        if(n == 0){
+             JOptionPane.showMessageDialog(this,"Return Success");
+           
+        }else{
+            this.dispose();
+                       
+        }            
+    }//GEN-LAST:event_btnReturnMovieActionPerformed
+
+    private void textFieldRentNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRentNumberActionPerformed
+          
+    }//GEN-LAST:event_textFieldRentNumberActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnReturnMovie;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelReturnInstructions;
+    private javax.swing.JTextField textFieldRentNumber;
     // End of variables declaration//GEN-END:variables
 }
