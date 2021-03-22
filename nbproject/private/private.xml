@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/FirstFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/MovieController.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/CartFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Genre.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/ImageRenderer.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/GenreController.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MainFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Movie.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MovieDetailFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/RentFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MoviesTableModel.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MovieDetailFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/CartFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/ReturnDetailFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/ReturnFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Payment.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MainFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/PaymentFrame.java</file>
+            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/PaymentController.java</file>
         </group>
     </open-files>
 </project-private>

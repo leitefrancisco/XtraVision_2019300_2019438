@@ -120,7 +120,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
              JOptionPane.showMessageDialog(this,"Return Success");
            
         }else{
-            this.dispose();
+//            this.dispose();
                        
         }            
     }//GEN-LAST:event_btnReturnMovieActionPerformed
