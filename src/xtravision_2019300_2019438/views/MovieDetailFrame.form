@@ -29,36 +29,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Component id="labelImg" min="-2" pref="280" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labelTitle" min="-2" pref="238" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
-                              <Component id="labelTitle" min="-2" pref="238" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="labelImg" min="-2" pref="223" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="btnRent" min="-2" pref="102" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="labelPrice" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="spinnerQnt" min="-2" pref="48" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnRent" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelPrice" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="spinnerQnt" min="-2" pref="48" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="labelDirector" alignment="1" min="-2" pref="238" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="labelDirector" alignment="1" min="-2" pref="238" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="329" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="285" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,17 +75,17 @@
                               <Component id="btnRent" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="labelImg" min="-2" pref="277" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="353" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="353" max="-2" attributes="0"/>
+                      <Component id="labelImg" min="-2" pref="420" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -111,7 +104,7 @@
     <Component class="javax.swing.JLabel" name="labelImg">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[180, 250]"/>
+          <Dimension value="[280, 420]"/>
         </Property>
       </Properties>
     </Component>
