@@ -183,7 +183,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRentActionPerformed
     private void addmMovieToCart(Movie movie){
         CartController cc = new CartController();
-        cc.addMovie(movie);
+//        cc.addMovie(movie);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

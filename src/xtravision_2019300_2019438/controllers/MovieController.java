@@ -46,8 +46,6 @@ public class MovieController{
         }
         return movies.toArray(new Movie[movies.size()]);
     }
-    
-    
     public Movie[] getMovies(){
         
         String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image from xtra_movie m\n" +
@@ -69,14 +67,14 @@ public class MovieController{
         
         return getMoviesFromQuery(query);
     }
+    
     public Movie getMovieById(int id) {
         
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
-                + "where m.id =" + id + "\n"
-                + "order by title;";
+                + "where m.id =" + id + "\n";
         
         return getMoviesFromQuery(query)[0];
        
