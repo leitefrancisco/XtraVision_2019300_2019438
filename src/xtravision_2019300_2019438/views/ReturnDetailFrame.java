@@ -11,10 +11,12 @@ package xtravision_2019300_2019438.views;
  */
 public class ReturnDetailFrame extends javax.swing.JInternalFrame {
 
+     private MainFrame mf;
     /**
      * Creates new form ReturnDetailFrame
      */
-    public ReturnDetailFrame() {
+    public ReturnDetailFrame(MainFrame mf) {
+        this.mf = mf;
         initComponents();
     }
 
