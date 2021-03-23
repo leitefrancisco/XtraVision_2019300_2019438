@@ -215,6 +215,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         image.setImage(image.getImage().getScaledInstance(150,180,180));
         labelImg.setIcon(image);       
         labelSynopsis.setLineWrap(true);
+        labelSynopsis.setWrapStyleWord(true);
         labelSynopsis.setEditable(false);
     }
     
