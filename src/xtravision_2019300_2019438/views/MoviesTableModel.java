@@ -59,9 +59,7 @@ public class MoviesTableModel extends AbstractTableModel {
             case 3:{
                 return movie.getDirector();
             }
-            case 100:{
-                return movie.getId();
-            }
+            
         }
         return null;
     }

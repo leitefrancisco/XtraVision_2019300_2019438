@@ -5,6 +5,8 @@
  */
 package xtravision_2019300_2019438.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author aline
@@ -12,16 +14,19 @@ package xtravision_2019300_2019438.models;
 public class Cart {
 
     public Cart() {
+        
     }
     
    
+    ArrayList<CartItem> items = new ArrayList<>();
     
-    private Movie[] movieCart; 
-
-    public Cart(Movie[]movieCart) {
-        this.movieCart = movieCart;
-    }
-
-    
-    
+//    add(movie, quantidade)    ;
+//        // pesquisa o movie, se nao existir quer dizer que pode asicinoar
+//        //                   se existir, verifica a quantidade, se tiver menos que dois atualiza a quantidade no elemento devolvido pelo getItem
+//         
+//    remove(movie)    ;
+//        // pesquisa o movie, se existir apagar o elemento devolvido pelo getItem
+//    
+//    getItem(movie) -> cartitem // pesquisa denteo do array um movie
+//    getAll()-> [];    
 }
