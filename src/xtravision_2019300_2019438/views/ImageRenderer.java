@@ -6,6 +6,7 @@
 package xtravision_2019300_2019438.views;
 
 import java.awt.Component;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -31,7 +32,10 @@ public class ImageRenderer extends DefaultTableCellRenderer {
                 if (value!=null) {
                     label.setHorizontalAlignment(JLabel.CENTER);
                     //value is parameter which filled by byteOfImage
-                    label.setIcon(new ImageIcon((byte[])movie.getImage()));
+//                    label.setIcon(new ImageIcon((byte[])movie.getImage()));
+                    ImageIcon image = new ImageIcon((byte[])movie.getImage());
+                    image.setImage(image.getImage().getScaledInstance(90,120,Image.SCALE_SMOOTH));
+                    label.setIcon(image);
                 }       
             }
             catch(Exception ex){

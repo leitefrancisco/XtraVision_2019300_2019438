@@ -249,7 +249,8 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }
     private void setTableModel(MoviesTableModel model){
         tableMovies.setModel(model);
-        tableMovies.setRowHeight(80);
+        tableMovies.setRowHeight(120);
+        tableMovies.getColumnModel().getColumn(0).setPreferredWidth(10);
         tableMovies.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
     }
     
