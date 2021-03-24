@@ -144,6 +144,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
         );
 
         btnCheckout.setText("Advance");
+        btnCheckout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckoutActionPerformed(evt);
+            }
+        });
 
         tableMovies.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,6 +234,10 @@ public class RentFrame extends javax.swing.JInternalFrame {
         Movie movie = (Movie) tableMovies.getValueAt(row, 0);
         mF.showMovieDetails(movie.getId());
     }//GEN-LAST:event_tableMoviesMouseClicked
+
+    private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCheckoutActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
