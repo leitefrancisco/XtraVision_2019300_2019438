@@ -5,7 +5,9 @@
  */
 package xtravision_2019300_2019438.views;
 
-import xtravision_2019300_2019438.controllers.CartController;
+import javax.swing.JOptionPane;
+import xtravision_2019300_2019438.models.Cart;
+import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
@@ -23,10 +25,9 @@ public class CartFrame extends javax.swing.JInternalFrame {
     public CartFrame(MainFrame mf) {
         this.mF = mf;
         initComponents();
+        
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +43,24 @@ public class CartFrame extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCart = new javax.swing.JTable();
         labelTop = new javax.swing.JLabel();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +98,11 @@ public class CartFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCartMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCart);
 
         labelTop.setText("Tap on the movie to remove it from the Cart!");
@@ -134,6 +158,24 @@ public class CartFrame extends javax.swing.JInternalFrame {
        this.mF.showPaymentFrame();
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        showCartMovies(Cart.getCurrentCart().getCartMovies());
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void tableCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCartMouseClicked
+        int row = tableCart.getSelectedRow();
+        Movie movie = (Movie) tableCart.getValueAt(row, 0);
+        int n = JOptionPane.showConfirmDialog(this, "Remove this movie?");
+        if (n == 0){
+            Cart.getCurrentCart().removeMovie(movie);
+            this.dispose();
+            mF.showCartFrame(true);
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_tableCartMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -145,6 +187,18 @@ public class CartFrame extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
 
-
+public void showCartMovies(Movie[] movies){
+        CartTableModel model = new CartTableModel(movies);
+        setTableModel(model);
+    }
   
+
+private void setTableModel(CartTableModel model){
+        tableCart.setModel(model);
+        tableCart.setRowHeight(120);
+        tableCart.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tableCart.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+    }
+
+
 }
