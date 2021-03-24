@@ -24,9 +24,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     
     public RentFrame(MainFrame mf) {
         this.mF = mf;
-        initComponents();
-        
-        
+        initComponents(); 
     }
     
     
