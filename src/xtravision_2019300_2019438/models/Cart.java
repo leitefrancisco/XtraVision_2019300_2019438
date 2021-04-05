@@ -15,6 +15,7 @@ public class Cart {
     
     private static Cart currentCart;
     
+    
     private ArrayList<Movie> movies = new ArrayList<>();
     
     public Cart(ArrayList<Movie> movies) {
