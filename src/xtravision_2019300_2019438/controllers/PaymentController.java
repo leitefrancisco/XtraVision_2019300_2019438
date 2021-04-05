@@ -17,22 +17,27 @@ import xtravision_2019300_2019438.views.PaymentFrame;
 public class PaymentController  {
     
      PaymentFrame paymentFrame;
-     Payment paymentModel;
      
      public PaymentController(){
         this.paymentFrame = new PaymentFrame(paymentFrame);
-        this.paymentModel = new Payment();
     }
      
      
-    private int cardNumber = paymentModel.getCardNumber();
-    private String cardName = paymentModel.getCardName();
-    private int month = paymentModel.getMonth();
-    private int year = paymentModel.getYear();
-    private int securityNumber = paymentModel.getSecurityNumber();
-    private int loyaltyNumber = paymentModel.getLoyaltyNumber();
-    
-    Payment pM = new Payment(cardNumber, cardName, month, year, securityNumber, loyaltyNumber);
+    private int cardNumber;
+    private String cardName;
+    private int month;
+    private int year;
+    private int securityNumber;
+
+    public PaymentController(int cardNumber, String cardName, int month, int year, int securityNumber) {
+        this.cardNumber = cardNumber;
+        this.cardName = cardName;
+        this.month = month;
+        this.year = year;
+        this.securityNumber = securityNumber;
+    }
+   
+ 
        
     
          

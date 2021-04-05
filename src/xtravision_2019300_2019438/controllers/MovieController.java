@@ -27,7 +27,7 @@ public class MovieController{
             while(rs.next())
             {
                 //int amt = rs.getInt()
-                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),rs.getBytes(7));
+                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),rs.getBytes(7), rs.getInt(8));
                 movies.add(movie);
             }
             db.close();
@@ -51,7 +51,7 @@ public class MovieController{
     
     public Movie[] getMoviesDb(){
         
-        String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image from xtra_movie m\n" +
+        String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image,m.amount from xtra_movie m\n" +
                 "join xtra_genre g \n" +
                 "on m.genre_id = g.id\n" +
                 "order by title;";
@@ -65,7 +65,7 @@ public class MovieController{
     
     public Movie[] getMoviesByTitleDb(String title) {
         
-        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
@@ -87,7 +87,7 @@ public class MovieController{
     
     public Movie getMovieByIdDb(int id) {
         
-        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
@@ -105,8 +105,11 @@ public class MovieController{
         return null;
     }
 
-    public Movie[] getMoviesByGenreDb(String selectedGenre) {
-        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
+
+
+    public Movie[] getMoviesByGenre(String selectedGenre) {
+        String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
+
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"

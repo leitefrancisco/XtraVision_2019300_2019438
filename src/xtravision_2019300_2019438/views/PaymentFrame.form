@@ -30,52 +30,40 @@
               <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="textFieldCardName" alignment="1" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                          <Component id="labelLoyaltyOr" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelCardName" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelCardNumber" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelValid" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelSecurityNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelCardName" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelCardNumber" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelValid" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelSecurityNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelLoyaltyNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="textFieldCardNumber" min="-2" pref="337" max="-2" attributes="0"/>
+                          <Component id="textFieldSecurityNumber" min="-2" pref="338" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="comboBoxMonth" min="-2" pref="185" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="comboBoxYear" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="textFieldCardNumber" min="-2" pref="337" max="-2" attributes="0"/>
-                              <Component id="textFieldSecurityNumber" min="-2" pref="338" max="-2" attributes="0"/>
-                              <Component id="textFieldLoyaltyNumber" alignment="0" min="-2" pref="338" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="comboBoxMonth" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="comboBoxYear" min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                          <Component id="radioButtonCreditCard" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="radioButtonDebitCard" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace pref="236" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="labelCreditCard" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="radioButtonCreditCard" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioButtonDebitCard" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="labelCreditCard" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelCardNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textFieldCardNumber" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -96,14 +84,7 @@
                   <Component id="labelSecurityNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="textFieldSecurityNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="labelLoyaltyOr" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelLoyaltyNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldLoyaltyNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="154" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnPayment" min="-2" pref="46" max="-2" attributes="0"/>
@@ -119,16 +100,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JRadioButton" name="radioButtonCreditCard">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Credit Card"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="radioButtonDebitCard">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Debit Card"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="labelCardNumber">
       <Properties>
         <Property name="text" type="java.lang.String" value="Card Number:"/>
@@ -149,19 +120,6 @@
         <Property name="text" type="java.lang.String" value="Security Number:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelLoyaltyNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Loyalty Number:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelLoyaltyOr">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Or use your Loyalty Points"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="textFieldCardNumber">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCardNumberActionPerformed"/>
@@ -173,8 +131,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldSecurityNumber">
-    </Component>
-    <Component class="javax.swing.JTextField" name="textFieldLoyaltyNumber">
     </Component>
     <Component class="javax.swing.JButton" name="btnPayment">
       <Properties>
@@ -237,6 +193,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelCreditCard">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Credit Card"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

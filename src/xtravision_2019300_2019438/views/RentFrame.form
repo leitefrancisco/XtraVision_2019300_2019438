@@ -169,6 +169,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Advance"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCheckoutActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="paneMovies">
 

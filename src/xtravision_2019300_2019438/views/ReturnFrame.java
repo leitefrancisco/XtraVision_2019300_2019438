@@ -14,12 +14,14 @@ import javax.swing.JOptionPane;
 public class ReturnFrame extends javax.swing.JInternalFrame {
 
      private MainFrame mF;
+     private int id;
 
     /**
      * Creates new form ReturnFrame
      */
     public ReturnFrame(MainFrame mf) {
         this.mF = mf;
+        this.id = id;
         initComponents();
     }
     
@@ -111,18 +113,23 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnReturnMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnMovieActionPerformed
-        evt.getActionCommand().equals(btnReturnMovie);
-        int n = JOptionPane.showConfirmDialog(this, 
-                    "Would you like to Return this Movie?" , 
-                    "Return Movie", 
-                    JOptionPane.YES_NO_OPTION);
-        if(n == 0){
-             JOptionPane.showMessageDialog(this,"Return Success");
-           
-        }else{
-//            this.dispose();
-                       
-        }            
+
+         mF.showReturnDetailFrame();
+
+//        evt.getActionCommand().equals(btnReturnMovie);
+//        int n = JOptionPane.showConfirmDialog(this, 
+//                    "Would you like to procced?" , 
+//                    "Returning Movie", 
+//                    JOptionPane.YES_NO_OPTION);
+//        if(n == 0){
+//            mF.showReturnDetailFrame();
+//           
+//        }else{
+////            this.dispose();
+//                       
+//        }  
+
+      
     }//GEN-LAST:event_btnReturnMovieActionPerformed
 
     private void textFieldRentNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRentNumberActionPerformed

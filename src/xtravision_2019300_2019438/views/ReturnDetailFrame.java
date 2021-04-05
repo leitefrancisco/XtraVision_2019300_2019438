@@ -5,6 +5,12 @@
  */
 package xtravision_2019300_2019438.views;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import xtravision_2019300_2019438.controllers.MovieController;
+import xtravision_2019300_2019438.models.Movie;
+
 /**
  *
  * @author aline
@@ -12,13 +18,24 @@ package xtravision_2019300_2019438.views;
 public class ReturnDetailFrame extends javax.swing.JInternalFrame {
 
      private MainFrame mf;
+     private int id;
+     
     /**
      * Creates new form ReturnDetailFrame
      */
-    public ReturnDetailFrame(MainFrame mf) {
-        this.mf = mf;
+    public ReturnDetailFrame() {
         initComponents();
+       
     }
+
+    public ReturnDetailFrame(MainFrame mf, int id) {
+        this.mf = mf;
+        this.id = id;
+        initComponents();
+        setLabels(getMovieInfo());
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,32 +46,109 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        labelTitle = new javax.swing.JLabel();
+        labelImg = new javax.swing.JLabel();
+        btnReturnMovie = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        labelTitle.setText("Title");
+
+        labelImg.setText("jLabel1");
+
+        btnReturnMovie.setText("Return");
+        btnReturnMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnMovieActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addContainerGap(686, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
+                .addComponent(btnReturnMovie)
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(jLabel1)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTitle)
+                    .addComponent(btnReturnMovie))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        mf.showReturnFrame();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnReturnMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnMovieActionPerformed
+         evt.getActionCommand().equals(btnReturnMovie);
+        int n = JOptionPane.showConfirmDialog(this, 
+                    "Would you like to procced?" , 
+                    "Returning Movie", 
+                    JOptionPane.YES_NO_OPTION);
+            if(n == 0){
+                  JOptionPane.showMessageDialog(this, 
+                          "Movie Returned \n Thank you!");
+//                    mf.showReturnDetailFrame();
+           
+        }else{
+//            this.dispose();
+           
+        }
+    }//GEN-LAST:event_btnReturnMovieActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnReturnMovie;
+    private javax.swing.JLabel labelImg;
+    private javax.swing.JLabel labelTitle;
     // End of variables declaration//GEN-END:variables
+
+     private Movie getMovieInfo(){
+        MovieController mc = new MovieController();
+        Movie movie = mc.getMovieById(this.id);
+        
+        return movie;
+            
+    }
+    
+    private void setLabels(Movie movie){
+        
+        movie = getMovieInfo();
+        labelTitle.setText(movie.getTitle());       
+        ImageIcon image = new ImageIcon((byte[])movie.getImage());
+        image.setImage(image.getImage().getScaledInstance(90,120,Image.SCALE_SMOOTH));
+        labelImg.setIcon(image);       
+       
+    }
+
+   
+
 }
