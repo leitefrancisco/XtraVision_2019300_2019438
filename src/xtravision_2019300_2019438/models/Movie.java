@@ -20,14 +20,14 @@ public class Movie {
     private int year;
     private String synopsis;
     private byte[] image;
-
+    //private int avlAmt;
    
 
     public Movie() {
     }
 
    
-    public Movie(int id, String title, String genre, String Director, int year, String synopsis,byte[] image) {
+    public Movie(int id, String title, String genre, String Director, int year, String synopsis,byte[] image) { //int avlAmt
         this.id = id;
         this.title = title;
         this.genre = genre;

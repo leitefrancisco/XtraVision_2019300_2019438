@@ -6,8 +6,11 @@
 package xtravision_2019300_2019438.views;
 
 import java.beans.PropertyVetoException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import xtravision_2019300_2019438.models.Cart;
+import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
@@ -22,6 +25,8 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        Cart cart = new Cart(new ArrayList<Movie>());
+        Cart.setCart(cart);
     }
 
     /**

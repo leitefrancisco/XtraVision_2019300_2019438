@@ -25,6 +25,7 @@ public class MovieController{
             
             while(rs.next())
             {
+                //int amt = rs.getInt()
                 Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),rs.getBytes(7));
                 movies.add(movie);
             }
@@ -47,7 +48,6 @@ public class MovieController{
         return movies.toArray(new Movie[movies.size()]);
     }
     
-    
     public Movie[] getMovies(){
         
         String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image from xtra_movie m\n" +
@@ -69,14 +69,14 @@ public class MovieController{
         
         return getMoviesFromQuery(query);
     }
+    
     public Movie getMovieById(int id) {
         
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image "
                 + "from xtra_movie m \n"
                 + "join xtra_genre g \n"
                 + "on m.genre_id = g.id \n"
-                + "where m.id =" + id + "\n"
-                + "order by title;";
+                + "where m.id =" + id + "\n";
         
         return getMoviesFromQuery(query)[0];
        
@@ -92,5 +92,7 @@ public class MovieController{
         
         return getMoviesFromQuery(query);
     }
+    
+   
     
 }

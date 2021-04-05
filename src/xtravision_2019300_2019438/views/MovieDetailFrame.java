@@ -1,16 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package xtravision_2019300_2019438.views;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import xtravision_2019300_2019438.controllers.CartController;
 import xtravision_2019300_2019438.controllers.MovieController;
+import xtravision_2019300_2019438.models.Cart;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
@@ -27,9 +26,9 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
      */
     public MovieDetailFrame() {
         initComponents();
-       
+        
     }
-
+    
     public MovieDetailFrame(MainFrame mf, int id) {
         this.mf = mf;
         this.id = id;
@@ -37,7 +36,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         setLabels(getMovieInfo());
     }
     
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,8 +53,8 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         labelSynopsis = new javax.swing.JTextArea();
         btnRent = new javax.swing.JButton();
-        spinnerQnt = new javax.swing.JSpinner();
         labelPrice = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(900, 600));
 
@@ -90,12 +89,10 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        spinnerQnt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        spinnerQnt.setModel(new javax.swing.SpinnerNumberModel(1, 1, 2, 1));
-        spinnerQnt.setValue(1);
-
         labelPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelPrice.setText("2.99 €");
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,13 +113,14 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                                     .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(labelPrice)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(spinnerQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(66, 66, 66)))
                                 .addGap(45, 45, 45))
                             .addComponent(labelDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,16 +128,16 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(labelTitle)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTitle)
+                            .addComponent(jLabel1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelDirector)
                                 .addGap(119, 119, 119)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(spinnerQnt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelPrice))
-                                .addGap(91, 91, 91)
+                                .addComponent(labelPrice)
+                                .addGap(92, 92, 92)
                                 .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -147,60 +145,87 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
         
     }//GEN-LAST:event_btnBackActionPerformed
-
+    
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
-
-        evt.getActionCommand().equals(btnRent);
-        int n = JOptionPane.showConfirmDialog(this, 
-                    "Movie added to the Cart \n Would you like to procced to Payment?" , 
-                    "Rent Movie", 
-                    JOptionPane.YES_NO_OPTION);
-        if(n == 0){
-            addmMovieToCart(getMovieInfo());
-            mf.showCartFrame(true);
-           
-        }else{
-            this.dispose();
-           
+        
+        
+        int n = JOptionPane.showConfirmDialog(this,
+                "Confirm Renting? " ,
+                "Rent Movie",
+                JOptionPane.YES_NO_OPTION);
+        if(Cart.getCurrentCart().getCartMovies().length<4){
+            if(n == 0){
+                if(Cart.getCurrentCart().addMovie(getMovieInfo())){
+                    JOptionPane.showMessageDialog(this, "Movie Added");
+                    this.dispose();
+                    
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Movie not Added \n you can only rent one movie of each title");
+                    this.dispose();
+                }
+                
+            }else{
+                this.dispose();
+                
+            }
         }
-            
-            
+        else{
+            JOptionPane.showMessageDialog(this, "You cannot have more than 4 movies in your Cart\nPlease remove one movie or clear your cart ");
+        }
+        
+        
+        
+        
+        
+//        evt.getActionCommand().equals(btnRent);
+//        int n = JOptionPane.showConfirmDialog(this,
+//                    "Movie added to the Cart \n Would you like to procced to Payment?" ,
+//                    "Rent Movie",
+//                    JOptionPane.YES_NO_OPTION);
+//        if(n == 0){
+//            addmMovieToCart(getMovieInfo());
+//            mf.showCartFrame(true);
+//
+//        }else{
+//            this.dispose();
+//
+//        }
+        
+        
     }//GEN-LAST:event_btnRentActionPerformed
-    private void addmMovieToCart(Movie movie){
-        CartController cc = new CartController();
-        cc.addMovie(movie);
-    }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDirector;
     private javax.swing.JLabel labelImg;
     private javax.swing.JLabel labelPrice;
     private javax.swing.JTextArea labelSynopsis;
     private javax.swing.JLabel labelTitle;
-    private javax.swing.JSpinner spinnerQnt;
     // End of variables declaration//GEN-END:variables
-   
+    
     private Movie getMovieInfo(){
         MovieController mc = new MovieController();
         Movie movie = mc.getMovieById(this.id);
         
         return movie;
-            
+        
     }
     private void setLabels(Movie movie){
         
@@ -210,12 +235,12 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         labelSynopsis.setText(movie.getSynopsis());
         ImageIcon image = new ImageIcon((byte[])movie.getImage());
         image.setImage(image.getImage().getScaledInstance(280,420,Image.SCALE_SMOOTH));
-        labelImg.setIcon(image);       
+        labelImg.setIcon(image);
         labelSynopsis.setLineWrap(true);
         labelSynopsis.setWrapStyleWord(true);
         labelSynopsis.setEditable(false);
     }
     
-
-  
+    
+    
 }

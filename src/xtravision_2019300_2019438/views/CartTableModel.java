@@ -1,4 +1,4 @@
-    /*
+/*
 * To change this license header, choose License Headers in Project Properties.
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
@@ -12,14 +12,12 @@ import xtravision_2019300_2019438.models.Movie;
  *
  * @author Francisco Leite
  */
-public class MoviesTableModel extends AbstractTableModel {
-    //https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data
+public class CartTableModel extends AbstractTableModel {
     
-    private String[] columnNames = {"Front","Title","Genre","Director"};
-    private Movie[ ] movies;
+    private String[] columnNames = {"Front","Title"};
+    private Movie[] movies;
     
-
-    public MoviesTableModel( Movie[] movies) {
+    public CartTableModel( Movie[] movies) {
         this.movies = movies;
     }
     
@@ -35,17 +33,19 @@ public class MoviesTableModel extends AbstractTableModel {
     
     @Override
     public int getRowCount() {
-          return movies.length;
+        return movies.length;
     }
     
     @Override
     public int getColumnCount() {
-       return columnNames.length;
+        return columnNames.length;
     }
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        
         Movie movie = movies[rowIndex];
+        
         switch (columnIndex){
             case 0: {
                 return movie;
@@ -53,14 +53,9 @@ public class MoviesTableModel extends AbstractTableModel {
             case 1:{
                 return movie.getTitle();
             }
-            case 2:{
-                return movie.getGenre();
-            }
-            case 3:{
-                return movie.getDirector();
-            }
             
         }
         return null;
     }
-}
+        
+    }
