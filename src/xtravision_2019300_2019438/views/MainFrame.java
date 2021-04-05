@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import xtravision_2019300_2019438.models.Cart;
 import xtravision_2019300_2019438.models.Movie;
+import xtravision_2019300_2019438.models.MoviesInDb;
 
 /**
  *
@@ -27,6 +28,8 @@ public class MainFrame extends javax.swing.JFrame {
         this.setResizable(false);
         Cart cart = new Cart(new ArrayList<Movie>());
         Cart.setCart(cart);
+        MoviesInDb moviesInDb = new MoviesInDb();
+        MoviesInDb.setMoviesInDb(moviesInDb);
     }
 
     /**
