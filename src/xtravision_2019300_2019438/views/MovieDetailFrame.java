@@ -55,6 +55,10 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         btnRent = new javax.swing.JButton();
         labelPrice = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        labelMovieAmount = new javax.swing.JLabel();
+        textFieldAmount = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        lblNotAvl = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(900, 600));
 
@@ -92,7 +96,13 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         labelPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelPrice.setText("2.99 €");
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Synopsis");
+
+        labelMovieAmount.setText("Movie Amount");
+
+        textFieldAmount.setEditable(false);
+
+        jLabel2.setText("Director");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,21 +116,33 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                         .addGap(11, 11, 11)
                         .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(labelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(labelPrice)
+                                            .addGap(66, 66, 66)))
+                                    .addGap(45, 45, 45))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(labelDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNotAvl, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelPrice)
-                                        .addGap(66, 66, 66)))
-                                .addGap(45, 45, 45))
-                            .addComponent(labelDirector, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(labelMovieAmount)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textFieldAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(23, 23, 23)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,10 +156,18 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelDirector)
-                                .addGap(119, 119, 119)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelDirector)
+                                    .addComponent(jLabel2))
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelMovieAmount)
+                                    .addComponent(textFieldAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(52, 52, 52)
                                 .addComponent(labelPrice)
-                                .addGap(92, 92, 92)
+                                .addGap(56, 56, 56)
+                                .addComponent(lblNotAvl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnRent, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -145,7 +175,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -160,12 +190,12 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
     
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
         
-        
         int n = JOptionPane.showConfirmDialog(this,
                 "Confirm Renting? " ,
                 "Rent Movie",
                 JOptionPane.YES_NO_OPTION);
-        if(Cart.getCurrentCart().getCartMovies().length<4){
+      
+     if(Cart.getCurrentCart().getCartMovies().length<4){
             if(n == 0){
                 if(Cart.getCurrentCart().addMovie(getMovieInfo())){
                     JOptionPane.showMessageDialog(this, "Movie Added");
@@ -185,6 +215,8 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         else{
             JOptionPane.showMessageDialog(this, "You cannot have more than 4 movies in your Cart\nPlease remove one movie or clear your cart ");
         }
+        
+        
         
         
         
@@ -212,12 +244,16 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRent;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDirector;
     private javax.swing.JLabel labelImg;
+    private javax.swing.JLabel labelMovieAmount;
     private javax.swing.JLabel labelPrice;
     private javax.swing.JTextArea labelSynopsis;
     private javax.swing.JLabel labelTitle;
+    private javax.swing.JLabel lblNotAvl;
+    private javax.swing.JTextField textFieldAmount;
     // End of variables declaration//GEN-END:variables
     
     private Movie getMovieInfo(){
@@ -239,6 +275,11 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         labelSynopsis.setLineWrap(true);
         labelSynopsis.setWrapStyleWord(true);
         labelSynopsis.setEditable(false);
+        textFieldAmount.setText(String.valueOf(movie.getAvlAmt()));
+         if(textFieldAmount.getText().equals("0")){
+             btnRent.setEnabled(false);
+             lblNotAvl.setText("No copies available");
+         }
     }
     
     
