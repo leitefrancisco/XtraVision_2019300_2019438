@@ -5,10 +5,8 @@
  */
 package xtravision_2019300_2019438.controllers;
 
-import java.util.ArrayList;
 import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Cart;
-import xtravision_2019300_2019438.models.Movie;
 
 public class CartController{
     

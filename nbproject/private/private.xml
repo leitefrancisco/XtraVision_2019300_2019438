@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/database/Database.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/MovieController.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MainFrame.java</file>
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Cart.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/MoviesInDb.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/RentFrame.java</file>
         </group>
     </open-files>
 </project-private>

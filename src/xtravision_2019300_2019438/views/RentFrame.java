@@ -219,7 +219,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_comboBoxGenresActionPerformed
     
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        showAllMovies(new MovieController().getMovies());
+        showAllMovies(new MovieController().getMoviesDb());
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void tableMoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMoviesMouseClicked
@@ -270,7 +270,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }
     public void showMoviesByGenre(String selectedGenre){
         MovieController controller = new MovieController();
-        Movie[] movies = controller.getMoviesByGenre(selectedGenre);
+        Movie[] movies = controller.getMoviesByGenreDb(selectedGenre);
         MoviesTableModel model = new MoviesTableModel(movies);
        setTableModel(model);
     }

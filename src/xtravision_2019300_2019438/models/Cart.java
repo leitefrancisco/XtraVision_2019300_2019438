@@ -43,7 +43,7 @@ public class Cart {
     }
     
     public boolean addMovie(Movie movie){
-        if(!movieAlreadyInCart(movie)&& movies.size()<4 ){  //&& movie.avlAmt()>0
+        if(!movieAlreadyInCart(movie)&& movies.size()<4 ){ 
             this.movies.add(movie);
             return true;
         }
