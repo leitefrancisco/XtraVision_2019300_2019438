@@ -5,8 +5,13 @@
  */
 package xtravision_2019300_2019438.views;
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import xtravision_2019300_2019438.controllers.PaymentController;
+import xtravision_2019300_2019438.models.Cart;
+import xtravision_2019300_2019438.models.Movie;
 
    
 /**
@@ -38,26 +43,18 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        radioButtonCreditCard = new javax.swing.JRadioButton();
-        radioButtonDebitCard = new javax.swing.JRadioButton();
         labelCardNumber = new javax.swing.JLabel();
         labelCardName = new javax.swing.JLabel();
         labelValid = new javax.swing.JLabel();
         labelSecurityNumber = new javax.swing.JLabel();
-        labelLoyaltyNumber = new javax.swing.JLabel();
-        labelLoyaltyOr = new javax.swing.JLabel();
         textFieldCardNumber = new javax.swing.JTextField();
         textFieldCardName = new javax.swing.JTextField();
         textFieldSecurityNumber = new javax.swing.JTextField();
-        textFieldLoyaltyNumber = new javax.swing.JTextField();
         btnPayment = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         comboBoxMonth = new javax.swing.JComboBox<>();
         comboBoxYear = new javax.swing.JComboBox<>();
-
-        radioButtonCreditCard.setText("Credit Card");
-
-        radioButtonDebitCard.setText("Debit Card");
+        labelCreditCard = new javax.swing.JLabel();
 
         labelCardNumber.setText("Card Number:");
 
@@ -66,11 +63,6 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
         labelValid.setText("Valid:");
 
         labelSecurityNumber.setText("Security Number:");
-
-        labelLoyaltyNumber.setText("Loyalty Number:");
-
-        labelLoyaltyOr.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        labelLoyaltyOr.setText("Or use your Loyalty Points");
 
         textFieldCardNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +94,8 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
 
         comboBoxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
 
+        labelCreditCard.setText("Credit Card");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,41 +110,32 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                 .addGap(171, 171, 171)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(textFieldCardName, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(191, 191, 191)
-                            .addComponent(labelLoyaltyOr))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelCardName)
-                                .addComponent(labelCardNumber)
-                                .addComponent(labelValid)
-                                .addComponent(labelSecurityNumber)
-                                .addComponent(labelLoyaltyNumber))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(textFieldCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textFieldSecurityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textFieldLoyaltyNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(comboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboBoxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(156, 156, 156)
-                            .addComponent(radioButtonCreditCard)
-                            .addGap(69, 69, 69)
-                            .addComponent(radioButtonDebitCard))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelCardName)
+                            .addComponent(labelCardNumber)
+                            .addComponent(labelValid)
+                            .addComponent(labelSecurityNumber))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(textFieldCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldSecurityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(comboBoxMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboBoxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(236, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelCreditCard)
+                .addGap(415, 415, 415))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonCreditCard)
-                    .addComponent(radioButtonDebitCard))
-                .addGap(57, 57, 57)
+                .addGap(46, 46, 46)
+                .addComponent(labelCreditCard)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCardNumber)
                     .addComponent(textFieldCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,13 +152,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSecurityNumber)
                     .addComponent(textFieldSecurityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(labelLoyaltyOr)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLoyaltyNumber)
-                    .addComponent(textFieldLoyaltyNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,18 +178,31 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-          evt.getActionCommand().equals(btnPayment);
+          if( checkCardDetails()){
         int n = JOptionPane.showConfirmDialog(this, 
                     "Would you like to procced your Payment?" , 
                     "Payment", 
                     JOptionPane.YES_NO_OPTION);
         if(n == 0){
-            JOptionPane.showMessageDialog(this, "Payment Success!");
+            
+            Movie[] movies = Cart.getCurrentCart().getCartMovies();
+            int [] idMovies = new int[movies.length];
+            for (int i = 0 ; i<movies.length;i++){
+                idMovies[i] = movies[i].getId();
+            }
+            Date date = new Date();
+            SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
+            dF.format(date);
+            
+            textFieldCardName.getText();
+           
+//            JOptionPane.showMessageDialog(this, "Payment Success!");
             
         }else{
             //this.showClosableWindow();
            
-        }  
+        } 
+          }
     }//GEN-LAST:event_btnPaymentActionPerformed
 
 
@@ -221,15 +213,11 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> comboBoxYear;
     private javax.swing.JLabel labelCardName;
     private javax.swing.JLabel labelCardNumber;
-    private javax.swing.JLabel labelLoyaltyNumber;
-    private javax.swing.JLabel labelLoyaltyOr;
+    private javax.swing.JLabel labelCreditCard;
     private javax.swing.JLabel labelSecurityNumber;
     private javax.swing.JLabel labelValid;
-    private javax.swing.JRadioButton radioButtonCreditCard;
-    private javax.swing.JRadioButton radioButtonDebitCard;
     private javax.swing.JTextField textFieldCardName;
     private javax.swing.JTextField textFieldCardNumber;
-    private javax.swing.JTextField textFieldLoyaltyNumber;
     private javax.swing.JTextField textFieldSecurityNumber;
     // End of variables declaration//GEN-END:variables
 
@@ -237,5 +225,45 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
       
     }
   
-
+    public boolean checkCardDetails(){
+        if(!textFieldCardNumber.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(this, "You can only use card numbers!");
+            return false;
+        }
+       
+        if(textFieldCardNumber.getText().length() != 16){
+            System.out.println(textFieldCardNumber.getText().length());
+            JOptionPane.showMessageDialog(this, "Must be 16 digits!");
+            return false;
+        }
+        
+        if(!textFieldCardName.getText().matches("^[a-zA-Z ]+$")){
+            JOptionPane.showMessageDialog(this, "You can only use letters!");
+            return false;
+        }
+        
+        //DATE
+//        if(labelValid.getText().matches("[0-9]+")){
+//            Date date = new Date();
+//            JOptionPane.showMessageDialog(this, "Please fill a valid date!");
+//            return false;
+//        }
+        
+        if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(this, "You can only use security numbers!");
+            return false;
+        }
+        
+        if(textFieldSecurityNumber.getText().length() != 3){
+            System.out.println(textFieldSecurityNumber.getText().length());
+            JOptionPane.showMessageDialog(this, "Must be 3 digits!");
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
+    
+    
 }

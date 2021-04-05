@@ -20,14 +20,14 @@ public class Movie {
     private int year;
     private String synopsis;
     private byte[] image;
-    //private int avlAmt;
+    private int avlAmt;
    
 
     public Movie() {
     }
 
    
-    public Movie(int id, String title, String genre, String Director, int year, String synopsis,byte[] image) { //int avlAmt
+    public Movie(int id, String title, String genre, String Director, int year, String synopsis,byte[] image, int avlAmt) { 
         this.id = id;
         this.title = title;
         this.genre = genre;
@@ -35,7 +35,16 @@ public class Movie {
         this.year = year;
         this.synopsis = synopsis;
         this.image = image;
+        this.avlAmt = avlAmt;
         
+    }
+
+    public int getAvlAmt() {
+        return avlAmt;
+    }
+
+    public void setAvlAmt(int avlAmt) {
+        this.avlAmt = avlAmt;
     }
 
     public int getId() {
