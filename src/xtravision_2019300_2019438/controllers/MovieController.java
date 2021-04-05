@@ -107,7 +107,7 @@ public class MovieController{
 
 
 
-    public Movie[] getMoviesByGenre(String selectedGenre) {
+    public Movie[] getMoviesByGenreDb(String selectedGenre) {
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
 
                 + "from xtra_movie m \n"

@@ -279,7 +279,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }
     public void showMoviesByGenre(String selectedGenre){
         MovieController controller = new MovieController();
-        Movie[] movies = controller.getMoviesByGenreDb(selectedGenre);
+        Movie[] movies = controller.getMoviesByGenre(selectedGenre);
         MoviesTableModel model = new MoviesTableModel(movies);
        setTableModel(model);
     }
