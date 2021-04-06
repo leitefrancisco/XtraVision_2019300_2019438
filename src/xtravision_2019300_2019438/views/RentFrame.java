@@ -204,8 +204,9 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
     
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        showMoviesByTitle();
         comboBoxGenres.setSelectedIndex(0);
+        showMoviesByTitle();
+        
         
     }//GEN-LAST:event_btnSearchActionPerformed
     
@@ -261,6 +262,8 @@ public class RentFrame extends javax.swing.JInternalFrame {
         tableMovies.setRowHeight(120);
         tableMovies.getColumnModel().getColumn(0).setPreferredWidth(10);
         tableMovies.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tableMovies.repaint();
+        
     }
     
     public void showGenres(){
