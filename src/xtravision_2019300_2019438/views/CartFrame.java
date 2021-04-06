@@ -156,10 +156,14 @@ public class CartFrame extends javax.swing.JInternalFrame {
 
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
        this.mF.showPaymentFrame();
+       
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         showCartMovies(Cart.getCurrentCart().getCartMovies());
+        if(Cart.getCurrentCart().getCartMovies().length == 0){
+            btnCheckout.setEnabled(false);                  
+        }
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void tableCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCartMouseClicked
@@ -198,6 +202,7 @@ private void setTableModel(CartTableModel model){
         tableCart.setRowHeight(120);
         tableCart.getColumnModel().getColumn(0).setPreferredWidth(10);
         tableCart.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        
     }
 
 

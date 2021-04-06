@@ -16,12 +16,12 @@ public class Order {
     
     private int id;
     private int[] moviesId;
-    private int creditCardNumber;
+    private String creditCardID;
     private Date date;
 
-    public Order(int[] moviesId, int creditCardNumber, Date date) {
+    public Order(int[] moviesId, String creditCardID, Date date) {
         this.moviesId = moviesId;
-        this.creditCardNumber = creditCardNumber;
+        this.creditCardID = creditCardID;
         this.date = date;
     }
     
