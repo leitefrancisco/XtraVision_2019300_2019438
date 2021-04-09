@@ -193,18 +193,34 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                     "Payment",
                     JOptionPane.YES_NO_OPTION);
             if(n == 0){
+               //ir a base de dados ver o id do cartao
+               //se nao tiver o cartao cria um novo ---- mesma funcao de cima getOrCreateCard();
+                
                 
                 Movie[] movies = Cart.getCurrentCart().getCartMovies();
                 int [] idMovies = new int[movies.length];
                 for (int i = 0 ; i<movies.length;i++){
                     idMovies[i] = movies[i].getId();
                 }
+                
                 Date date = new Date();
                 SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
                 dF.format(date);
-
                 
-                Card card = new Card(textFieldCardNumber.getText() , Integer.parseInt(textFieldSecurityNumber.getText()), textFieldCardName.getText(), Integer.parseInt(comboBoxMonth.getSelectedItem().toString()), Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
+                //
+                //criar a ordem
+                // ordem.addLines(idMovies)
+                //escrevo a ordem na db
+                //subtrair filmes alugados
+                //limpar o carrinho
+                //mostrar o numero da ordem ( vai precisar para devolver)
+                //refresh do moviesemdb
+                
+               
+                
+                
+                
+               // Card card = new Card(textFieldCardNumber.getText() , Integer.parseInt(textFieldSecurityNumber.getText()), textFieldCardName.getText(), Integer.parseInt(comboBoxMonth.getSelectedItem().toString()), Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
                 
                 
 //            JOptionPane.showMessageDialog(this, "Payment Success!");

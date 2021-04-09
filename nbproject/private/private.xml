@@ -3,25 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/MovieController.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/FirstFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/OrderLine.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/PaymentController.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/PaymentFrame.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Order.java</file>
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MainFrame.java</file>
-            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MovieDetailFrame.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Movie.java</file>
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Cart.java</file>
+            <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Payment.java</file>
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/MoviesInDb.java</file>
             <file>file:/C:/Users/Francisco%20Leite/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/RentFrame.java</file>
-=======
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/MovieController.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/MovieDetailFrame.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/RentFrame.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/ReturnFrame.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Movie.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/models/Cart.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/views/PaymentFrame.java</file>
-            <file>file:/C:/Users/aline/Documents/NetBeansProjects/XtraVision_2019300_2019438/src/xtravision_2019300_2019438/controllers/PaymentController.java</file>
->>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
