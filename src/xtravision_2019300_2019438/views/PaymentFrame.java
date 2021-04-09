@@ -213,6 +213,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                 //escrevo a ordem na db
                 //subtrair filmes alugados
                 //limpar o carrinho
+                //mostrar o numero da ordem ( vai precisar para devolver)
                 //refresh do moviesemdb
                 
                
