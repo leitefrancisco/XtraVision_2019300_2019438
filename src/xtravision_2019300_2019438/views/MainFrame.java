@@ -16,6 +16,7 @@ import xtravision_2019300_2019438.models.MoviesInDb;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() {
+        //initializing the components and adding to get information from the Database and adding home buttons like Home, a greeting and the card button
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -125,10 +127,12 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //button to redirect to the cart frame
     private void btnCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartActionPerformed
        this.showCartFrame(true);
     }//GEN-LAST:event_btnCartActionPerformed
 
+    //button to redirect to the the main frame(first frame)
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         this.showFirstFrame();
     }//GEN-LAST:event_btnHomeActionPerformed
@@ -145,6 +149,7 @@ public class MainFrame extends javax.swing.JFrame {
         
     }
     private void showClosableWindow(javax.swing.JInternalFrame window){
+        //method for when you are in another frame and add a back button to the previous frame to continue with the information within the frame.
         window.setVisible(true);
         this.desktopPane.add(window);
         try {
@@ -155,14 +160,17 @@ public class MainFrame extends javax.swing.JFrame {
         
     }
     
+    //method to show the rent frame
     public void showRentFrame(){
             showWindow(new RentFrame(this));
     }
     
+    //method to show the return frame
     public void showReturnFrame(){
             showWindow(new ReturnFrame(this));
     }
     
+    //method to show the cart frame
     public void showCartFrame(Boolean closable){
         CartFrame cf = new CartFrame(this);
                 if(closable){
@@ -172,7 +180,7 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             
     }
-    
+    //method to show the Payment frame
     public void showPaymentFrame(){
             showWindow(new PaymentFrame(this));
     }

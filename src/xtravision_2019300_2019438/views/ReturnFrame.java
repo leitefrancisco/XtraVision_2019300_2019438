@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class ReturnFrame extends javax.swing.JInternalFrame {
 

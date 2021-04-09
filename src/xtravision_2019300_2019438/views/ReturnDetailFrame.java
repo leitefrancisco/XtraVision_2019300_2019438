@@ -13,7 +13,8 @@ import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class ReturnDetailFrame extends javax.swing.JInternalFrame {
 

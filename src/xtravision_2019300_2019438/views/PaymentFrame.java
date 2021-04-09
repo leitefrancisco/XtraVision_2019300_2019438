@@ -19,7 +19,8 @@ import xtravision_2019300_2019438.models.Order;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class PaymentFrame extends javax.swing.JInternalFrame {
     

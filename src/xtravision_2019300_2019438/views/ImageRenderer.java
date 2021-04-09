@@ -16,9 +16,12 @@ import xtravision_2019300_2019438.models.Movie;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class ImageRenderer extends DefaultTableCellRenderer {
     //https://www.daniweb.com/programming/software-development/threads/447192/trying-to-show-image-from-mysql-to-jtable
+    
+    //Image Renderer. Taking images through a JLabel and rendering with the settings chosen to appear in the MovieDetail Frame
  
     ImageRenderer() {
         

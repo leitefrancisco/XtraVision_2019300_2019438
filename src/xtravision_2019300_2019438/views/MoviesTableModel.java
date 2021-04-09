@@ -11,9 +11,12 @@ import xtravision_2019300_2019438.models.Movie;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class MoviesTableModel extends AbstractTableModel {
     //https://docs.oracle.com/javase/tutorial/uiswing/components/table.html#data
+    
+    //method to get image, title, genre and director in the rent frame
     
     private String[] columnNames = {"Front","Title","Genre","Director"};
     private Movie[ ] movies;
@@ -45,6 +48,7 @@ public class MoviesTableModel extends AbstractTableModel {
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        //switch to return title, genre and director in the rent frame
         Movie movie = movies[rowIndex];
         switch (columnIndex){
             case 0: {

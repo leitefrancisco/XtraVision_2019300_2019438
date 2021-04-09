@@ -14,8 +14,12 @@ import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
+ * /**
+ *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
+ 
 
 
 public class MovieDetailFrame extends javax.swing.JInternalFrame {
@@ -200,19 +204,20 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    //button to go back to the previous frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
         
     }//GEN-LAST:event_btnBackActionPerformed
     
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
-        
+        //confirmation button for renting the movie
         int n = JOptionPane.showConfirmDialog(this,
                 "Confirm Renting? " ,
                 "Rent Movie",
                 JOptionPane.YES_NO_OPTION);
       
+        //if the client wants to rent more than 4 films, the system does not authorize it.
      if(Cart.getCurrentCart().getCartMovies().length<4){
             if(n == 0){
                 if(Cart.getCurrentCart().addMovie(getMovieInfo())){
@@ -221,7 +226,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                     
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "Movie not Added \n you can only rent one movie of each title");
+                    JOptionPane.showMessageDialog(this, "Movie not Added \n you can only rent one movie of each title"); 
                     this.dispose();
                 }
                 
@@ -276,6 +281,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private Movie getMovieInfo(){
+        //method to get all the informations about movies from the database, getting by the id
         MovieController mc = new MovieController();
         Movie movie = mc.getMovieById(this.id);
         
@@ -283,7 +289,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         
     }
     private void setLabels(Movie movie){
-        
+        //setting the labels that will show in the detail frame such as title, director etc...
         movie = getMovieInfo();
         labelTitle.setText(movie.getTitle());
         labelDirector.setText(movie.getDirector());
