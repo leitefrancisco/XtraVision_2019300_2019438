@@ -241,7 +241,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
         
     }
     
-    
+    //
     public boolean checkCardDetails(){
         if(!textFieldCardNumber.getText().matches("[0-9]+")){
             JOptionPane.showMessageDialog(this, "You can only use card numbers!");
