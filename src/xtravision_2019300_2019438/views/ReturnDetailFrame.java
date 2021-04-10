@@ -102,7 +102,7 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //button to go back to return frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mf.showReturnFrame();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -132,6 +132,7 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelTitle;
     // End of variables declaration//GEN-END:variables
 
+    //method to get the information from the movies
      private Movie getMovieInfo(){
         MovieController mc = new MovieController();
         Movie movie = mc.getMovieById(this.id);
@@ -141,7 +142,7 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     }
     
     private void setLabels(Movie movie){
-        
+        //setting the labels that will show in the return detail frame
         movie = getMovieInfo();
         labelTitle.setText(movie.getTitle());       
         ImageIcon image = new ImageIcon((byte[])movie.getImage());
