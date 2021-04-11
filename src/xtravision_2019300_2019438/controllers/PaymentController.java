@@ -5,17 +5,19 @@
  */
 package xtravision_2019300_2019438.controllers;
 
-import xtravision_2019300_2019438.views.PaymentFrame;
+import xtravision_2019300_2019438.database.Database;
+
 
 /**
  *
  * @author aline
+ * @author Francisco
  */
 public class PaymentController  {
     
      
      
-     public PaymentController(){
+    public void checkOrCreateCard(){
         
     }
      

@@ -10,14 +10,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Movie;
-import xtravision_2019300_2019438.models.MoviesInDb;
 
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
-public class MovieController{
-    
+public class MovieController extends BaseController implements IMovieSource {
+    //method used inside the others from this class, it will handle the querie from the other methods and return the movies based on it.
     private Movie[] getMoviesFromQuery(String query){
         ArrayList<Movie> movies = new ArrayList<>();
         try{
@@ -49,7 +49,8 @@ public class MovieController{
         return movies.toArray(new Movie[movies.size()]);
     }
     
-    public Movie[] getMoviesDb(){
+    @Override
+    public Movie[] getMovies(){
         
         String query = "select m.id,g.genre, m.title, m.year, m.director,m.synopsis, m.image,m.amount from xtra_movie m\n" +
                 "join xtra_genre g \n" +
@@ -59,11 +60,9 @@ public class MovieController{
         return getMoviesFromQuery(query);
     }
     
-    public Movie[] getMovies(){
-        return  MoviesInDb.getCurrentMoviesInDb().getMovies();
-    }
-    
-    public Movie[] getMoviesByTitleDb(String title) {
+   
+    @Override
+    public Movie[] getMoviesByTitle(String title) {
         
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
                 + "from xtra_movie m \n"
@@ -75,25 +74,8 @@ public class MovieController{
         return getMoviesFromQuery(query);
     }
    
-    public Movie[] getMoviesByTitle(String title){
-        
-        ArrayList<Movie> movies = new ArrayList<>();
-        
-        Movie[] moviesInDb = MoviesInDb.getCurrentMoviesInDb().getMovies();
-        
-        for (int i = 0 ; i<moviesInDb.length ; i++){
-            
-            Movie m = moviesInDb[i];
-            
-            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){
-                
-                movies.add(m);
-            }
-        }
-        return movies.toArray(new Movie[movies.size()]);
-    }
-    
-    public Movie getMovieByIdDb(int id) {
+     @Override
+    public Movie getMovieById(int id) {
         
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
                 + "from xtra_movie m \n"
@@ -104,18 +86,9 @@ public class MovieController{
         return getMoviesFromQuery(query)[0];
        
     }
-    public Movie getMovieById(int id){
-        for (int i = 0;  i<MoviesInDb.getCurrentMoviesInDb().getMovies().length ; i++){
-            if (MoviesInDb.getCurrentMoviesInDb().getMovies()[i].getId() == id){
-                return MoviesInDb.getCurrentMoviesInDb().getMovies()[i];
-            }
-        }
-        return null;
-    }
-
-
-
-    public Movie[] getMoviesByGenreDb(String selectedGenre) {
+    
+    @Override
+    public Movie[] getMoviesByGenre(String selectedGenre) {
         String query = "select m.id, g.genre, m.title, m.year, m.director,m.synopsis,m.image, m.amount "
 
                 + "from xtra_movie m \n"
@@ -126,15 +99,17 @@ public class MovieController{
         
         return getMoviesFromQuery(query);
     }
-    public Movie[] getMoviesByGenre(String selectedGenre) {
-        ArrayList<Movie> movies = new ArrayList<>();
-        for (int i = 0;  i< MoviesInDb.getCurrentMoviesInDb().getMovies().length ; i++){
-            Movie m = MoviesInDb.getCurrentMoviesInDb().getMovies()[i];
-            if (m.getGenre().equals(selectedGenre)){
-                movies.add(m);
-            }
-        }
-        return movies.toArray(new Movie[movies.size()]);
+
+    
+
+    @Override
+    protected String GetTableName() {
+       return "xtra_movie";
+    }
+
+    @Override
+    public boolean isCached() {
+        return false;
     }
     
    

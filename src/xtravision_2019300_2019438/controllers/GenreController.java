@@ -5,46 +5,21 @@
 */
 package xtravision_2019300_2019438.controllers;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import xtravision_2019300_2019438.database.Database;
 
 /**
  *
  * @author Francisco Leite
  */
-public class GenreController {
+public class GenreController extends BaseController {
     
-    
-    public String[] getGenres(){
-        ArrayList<String> genres = new ArrayList<>();
-        genres.add("Select Genre");
-        String query = "select * from xtra_genre";
-        try{
-            Database db = new Database();
-            ResultSet rs = db.executeQuery(query);
-            while(rs.next())
-            {
-                String genre = rs.getString(2);
-                genres.add(genre);
-            }
-            db.close();
-        }
-        catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            
-            // Loop through the SQL Exceptions
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                
-                se = se.getNextException();
-            }
-        } catch (Exception e) {
-            System.out.println(e);   
-        }
-        return genres.toArray(new String[genres.size()]);
+    //Get all the genres in the Db to be used in the genre filter in the RentFrame
+    public String[] getGenres() throws SQLException{
+        return getColumnValues( "genre", "Select Genre");
+    }
+
+    @Override
+    protected String GetTableName() {
+        return "xtra_genre";
     }
 }

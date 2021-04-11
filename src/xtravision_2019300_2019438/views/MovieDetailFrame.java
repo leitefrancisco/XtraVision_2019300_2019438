@@ -276,9 +276,8 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private Movie getMovieInfo(){
-        MovieController mc = new MovieController();
-        Movie movie = mc.getMovieById(this.id);
-        
+        Movie movie = this.mf.getMovieSource().getMovieById(this.id);
+       
         return movie;
         
     }

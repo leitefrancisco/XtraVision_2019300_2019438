@@ -4,13 +4,16 @@
 * and open the template in the editor.
 */
 package xtravision_2019300_2019438.views;
-import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import xtravision_2019300_2019438.controllers.CardController;
-import xtravision_2019300_2019438.controllers.PaymentController;
+import xtravision_2019300_2019438.controllers.OrderController;
 import xtravision_2019300_2019438.models.Card;
 import xtravision_2019300_2019438.models.Cart;
 import xtravision_2019300_2019438.models.Movie;
@@ -187,55 +190,117 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBackActionPerformed
     
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        if( checkCardDetails() && checkCart()){
-            int n = JOptionPane.showConfirmDialog(this,
-                    "Would you like to procced your Payment?" ,
-                    "Payment",
-                    JOptionPane.YES_NO_OPTION);
-            if(n == 0){
-               //ir a base de dados ver o id do cartao
-               //se nao tiver o cartao cria um novo ---- mesma funcao de cima getOrCreateCard();
-                
-                
-                Movie[] movies = Cart.getCurrentCart().getCartMovies();
-                int [] idMovies = new int[movies.length];
-                for (int i = 0 ; i<movies.length;i++){
-                    idMovies[i] = movies[i].getId();
+        try{
+            CardController cd = new CardController();
+            boolean cardExists = cd.isCardInDatabase(textFieldCardNumber.getText());
+            
+            Card card = new Card(textFieldCardNumber.getText() ,
+                    textFieldSecurityNumber.getText(),
+                    textFieldCardName.getText(),
+                    Integer.parseInt(comboBoxMonth.getSelectedItem().toString()),
+                    Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
+            
+            if( checkCardDetails() && checkCart(cardExists)){
+                int n = JOptionPane.showConfirmDialog(this,
+                        "Would you like to procced your Payment?" ,
+                        "Payment",
+                        JOptionPane.YES_NO_OPTION);
+                if(n == 0){
+                    int cardId;
+                    
+                    cardId = cd.getOrCreateCard(card);
+                    
+                    
+//                ArrayList<OrderLine> orderLines = new ArrayList<>();
+                    Date date = new Date();
+                    SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
+                    dF.format(date);
+                    
+                    Movie[] movies = Cart.getCurrentCart().getCartMovies();
+//                int [] idMovies = new int[movies.length];
+//                for (int i = 0 ; i<movies.length;i++){
+//                    idMovies[i] = movies[i].getId();
+//                }
+                    
+                    Order order = new Order(cardId, date);
+                    
+                    
+                    order.addMovies(movies);
+                    
+                    OrderController oc = new OrderController();
+                    
+                    
+                    oc.createOrderinDb(order);
+                    
+                    this.mF.refreshCache();
+                    
+                    
+                    
+                    //criar a ordem
+                    // ordem.addLines(idMovies)
+                    //escrevo a ordem na db
+                    //subtrair filmes alugados
+                    //limpar o carrinho
+                    //mostrar o numero da ordem ( vai precisar para devolver)
+                    //refresh do moviesemdb
+                    // JOptionPane.showMessageDialog(this, "Payment Success!");
+                    JOptionPane.showMessageDialog(this, "fim");
+                    
+                    
+                }else{
                 }
-                
-                Date date = new Date();
-                SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
-                dF.format(date);
-                
-                //
-                //criar a ordem
-                // ordem.addLines(idMovies)
-                //escrevo a ordem na db
-                //subtrair filmes alugados
-                //limpar o carrinho
-                //mostrar o numero da ordem ( vai precisar para devolver)
-                //refresh do moviesemdb
-                
-               
-                
-                
-                
-               // Card card = new Card(textFieldCardNumber.getText() , Integer.parseInt(textFieldSecurityNumber.getText()), textFieldCardName.getText(), Integer.parseInt(comboBoxMonth.getSelectedItem().toString()), Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
-                
-                
-//            JOptionPane.showMessageDialog(this, "Payment Success!");
-
-            }else{
-                //this.showClosableWindow();
-                
             }
         }
+        catch (Exception ex) {
+            Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnPaymentActionPerformed
-
+    
     private void textFieldSecurityNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSecurityNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldSecurityNumberActionPerformed
     
+    
+    public JComboBox<String> getComboBoxMonth() {
+        return comboBoxMonth;
+    }
+    
+    public JComboBox<String> getComboBoxYear() {
+        return comboBoxYear;
+    }
+    
+    public JLabel getLabelCardName() {
+        return labelCardName;
+    }
+    
+    public JLabel getLabelCardNumber() {
+        return labelCardNumber;
+    }
+    
+    public JLabel getLabelCreditCard() {
+        return labelCreditCard;
+    }
+    
+    public JLabel getLabelSecurityNumber() {
+        return labelSecurityNumber;
+    }
+    
+    public JLabel getLabelValid() {
+        return labelValid;
+    }
+    
+    public JTextField getTextFieldCardName() {
+        return textFieldCardName;
+    }
+    
+    public JTextField getTextFieldCardNumber() {
+        return textFieldCardNumber;
+    }
+    
+    public JTextField getTextFieldSecurityNumber() {
+        return textFieldSecurityNumber;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -252,13 +317,17 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField textFieldSecurityNumber;
     // End of variables declaration//GEN-END:variables
     
-    private void showClosableWindow() {
+//    public boolean checkCardDetails(){
+    public boolean checkCardDetails(Card card){
+//        try{
+//            return card.isValid();
+//        }catch(Exception ex){
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
         
-    }
-    
-    
-    public boolean checkCardDetails(){
         if(!textFieldCardNumber.getText().matches("[0-9]+")){
+//            throw new Exception("You can only use card numbers!")
+                    
             JOptionPane.showMessageDialog(this, "You can only use card numbers!");
             return false;
         }
@@ -280,32 +349,33 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this, "Please fill a valid date!");
 //            return false;
 //        }
-
-if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
-    JOptionPane.showMessageDialog(this, "You can only use security numbers!");
-    return false;
-}
-
-if(textFieldSecurityNumber.getText().length() != 3){
-    System.out.println(textFieldSecurityNumber.getText().length());
-    JOptionPane.showMessageDialog(this, "Must be 3 digits!");
-    return false;
-}
-
-return true;
-
-    }
-
-    private boolean checkCart() {
         
-      if(!new CardController().isCardInDatabase(textFieldCardNumber.getText())){
-           if(Cart.getCurrentCart().getCartMovies().length > 2){
-               JOptionPane.showMessageDialog(this, "You can only rent 2 movies for the first time 'Based on Card'");
-               return false;
-           }
+        if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(this, "You can only use security numbers!");
+            return false;
         }
-    return true;
-    }    
+        
+        if(textFieldSecurityNumber.getText().length() != 3){
+            System.out.println(textFieldSecurityNumber.getText().length());
+            JOptionPane.showMessageDialog(this, "Must be 3 digits!");
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
+    
+    private boolean checkCart(boolean cardExists) {
+        
+        if(!cardExists){
+            if(Cart.getCurrentCart().getCartMovies().length > 2){
+                JOptionPane.showMessageDialog(this, "You can only rent 2 movies for the first time 'Based on Card'");
+                return false;
+            }
+        }
+        return true;
+    }
     
     
 }

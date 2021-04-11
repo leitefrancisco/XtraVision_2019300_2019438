@@ -10,20 +10,41 @@ package xtravision_2019300_2019438.models;
  * @author aline
  */
 public class Card {
-
+    
+    private int id;
     private String cardNumber;
-    private int cardSecurityNumber;
+    private String cardSecurityNumber;
     private String cardName;
     private int cardExpMonth;
     private int cardExpYear;
 
-    public Card(String cardNumber, int cardSecurityNumber, String cardName, int cardExpMonth, int cardExpYear) {
+    public Card(){
+        
+    }
 
+    public Card(String cardNumber, String cardSecurityNumber, String cardName, int cardExpMonth, int cardExpYear) {
         this.cardNumber = cardNumber;
         this.cardSecurityNumber = cardSecurityNumber;
         this.cardName = cardName;
         this.cardExpMonth = cardExpMonth;
         this.cardExpYear = cardExpYear;
+    }
+    
+    public Card(int id,String cardNumber, String cardSecurityNumber, String cardName, int cardExpMonth, int cardExpYear) {
+        this.id = id;
+        this.cardNumber = cardNumber;
+        this.cardSecurityNumber = cardSecurityNumber;
+        this.cardName = cardName;
+        this.cardExpMonth = cardExpMonth;
+        this.cardExpYear = cardExpYear;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCardSecurityNumber() {
+        return cardSecurityNumber;
     }
 
     public String getCardNumber() {
@@ -34,11 +55,7 @@ public class Card {
         this.cardNumber = cardNumber;
     }
 
-    public int getCardSecurityNumber() {
-        return cardSecurityNumber;
-    }
-
-    public void setCardSecurityNumber(int cardSecurityNumber) {
+    public void setCardSecurityNumber(String cardSecurityNumber) {
         this.cardSecurityNumber = cardSecurityNumber;
     }
 
