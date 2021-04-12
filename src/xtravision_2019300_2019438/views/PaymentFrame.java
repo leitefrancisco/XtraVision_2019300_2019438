@@ -22,7 +22,8 @@ import xtravision_2019300_2019438.models.Order;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class PaymentFrame extends javax.swing.JInternalFrame {
     
@@ -184,12 +185,12 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     private void textFieldCardNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCardNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCardNameActionPerformed
-    
+    //button to go back to the cart frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mF.showCartFrame();
     }//GEN-LAST:event_btnBackActionPerformed
     
-    private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
+private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {                                           
         try{
             CardController cd = new CardController();
             boolean cardExists = cd.isCardInDatabase(textFieldCardNumber.getText());
@@ -251,8 +252,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
             Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
-    }//GEN-LAST:event_btnPaymentActionPerformed
-    
+    }
     private void textFieldSecurityNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSecurityNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldSecurityNumberActionPerformed
@@ -276,6 +276,18 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
 //    public boolean checkCardDetails(){
+    public boolean checkCardDetails(Card card){
+//        try{
+//            return card.isValid();
+//        }catch(Exception ex){
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
+        
+
+=======
+    }
+    
+    //card validation
     public boolean checkCardDetails(Card card){
 //        try{
 //            return card.isValid();
@@ -326,11 +338,15 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     
     private boolean checkCart(boolean cardExists) {
         
+
         if(!cardExists){
             if(Cart.getCurrentCart().getCartMovies().length > 2){
                 JOptionPane.showMessageDialog(this, "You can only rent 2 movies for the first time 'Based on Card'");
                 return false;
             }
+
+        //validation so that if the customer's card is new, only authorize him to rent 2 films
+
         }
         return true;
     }
