@@ -11,8 +11,11 @@ import xtravision_2019300_2019438.models.Movie;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class CartTableModel extends AbstractTableModel {
+    
+    //cart table model to configure and the cart frame with an abstract class
     
     private String[] columnNames = {"Front","Title"};
     private Movie[] movies;
@@ -43,6 +46,7 @@ public class CartTableModel extends AbstractTableModel {
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        //method to index the movie in the cart taking from the database
         
         Movie movie = movies[rowIndex];
         

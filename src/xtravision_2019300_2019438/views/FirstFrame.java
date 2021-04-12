@@ -7,7 +7,8 @@ package xtravision_2019300_2019438.views;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class FirstFrame extends javax.swing.JInternalFrame {
 
@@ -72,10 +73,12 @@ public class FirstFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //button to redirect to rent
     private void btnRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentActionPerformed
         this.mF.showRentFrame();
     }//GEN-LAST:event_btnRentActionPerformed
 
+    //button to redirect to return
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
        this.mF.showReturnFrame();
     }//GEN-LAST:event_btnReturnActionPerformed

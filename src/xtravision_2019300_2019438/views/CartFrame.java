@@ -11,8 +11,10 @@ import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
+
 public class CartFrame extends javax.swing.JInternalFrame {
 
 
@@ -149,17 +151,20 @@ public class CartFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //button to return to Rent Frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.mF.showRentFrame();
         //this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    //button to go to Payment Frame
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
        this.mF.showPaymentFrame();
        
     }//GEN-LAST:event_btnCheckoutActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        //code so that when there is no film on the card, the button for payment is inactivated
         showCartMovies(Cart.getCurrentCart().getCartMovies());
         if(Cart.getCurrentCart().getCartMovies().length == 0){
             btnCheckout.setEnabled(false);                  
@@ -167,6 +172,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void tableCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCartMouseClicked
+        //to remove the film from the cart, we did not put a button, but when clicked on the film a JOptionPane appears asking if the customer wants to remove the film from the cart
         int row = tableCart.getSelectedRow();
         Movie movie = (Movie) tableCart.getValueAt(row, 0);
         int n = JOptionPane.showConfirmDialog(this, "Remove this movie?");
@@ -192,12 +198,14 @@ public class CartFrame extends javax.swing.JInternalFrame {
 
 
 public void showCartMovies(Movie[] movies){
+    //an array of the films that were selected to be shown on the cart was created
         CartTableModel model = new CartTableModel(movies);
         setTableModel(model);
     }
   
 
 private void setTableModel(CartTableModel model){
+    //taking information from the Cart Table Model to configure the movies and movie posters that are on the card
         tableCart.setModel(model);
         tableCart.setRowHeight(120);
         tableCart.getColumnModel().getColumn(0).setPreferredWidth(10);
