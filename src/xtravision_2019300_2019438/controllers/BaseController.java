@@ -19,6 +19,7 @@ import xtravision_2019300_2019438.database.Database;
  * @author Francisco Leite
  */
 public abstract class BaseController {
+    
     protected abstract String GetTableName();
     
     protected String convertDateTimeToString(Date datetime)
