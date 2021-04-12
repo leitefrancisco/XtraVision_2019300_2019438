@@ -74,12 +74,20 @@ public class MovieController{
         
         return getMoviesFromQuery(query);
     }
+   
     public Movie[] getMoviesByTitle(String title){
+        
         ArrayList<Movie> movies = new ArrayList<>();
+        
         Movie[] moviesInDb = MoviesInDb.getCurrentMoviesInDb().getMovies();
+        
         for (int i = 0 ; i<moviesInDb.length ; i++){
-            if(moviesInDb[i].getTitle().toLowerCase().contains(title.toLowerCase())){
-                movies.add(moviesInDb[i]);
+            
+            Movie m = moviesInDb[i];
+            
+            if(m.getTitle().toLowerCase().contains(title.toLowerCase())){
+                
+                movies.add(m);
             }
         }
         return movies.toArray(new Movie[movies.size()]);
@@ -120,9 +128,10 @@ public class MovieController{
     }
     public Movie[] getMoviesByGenre(String selectedGenre) {
         ArrayList<Movie> movies = new ArrayList<>();
-        for (int i = 0;  i<MoviesInDb.getCurrentMoviesInDb().getMovies().length ; i++){
-            if (MoviesInDb.getCurrentMoviesInDb().getMovies()[i].getGenre()== selectedGenre){
-                 movies.add(MoviesInDb.getCurrentMoviesInDb().getMovies()[i]);
+        for (int i = 0;  i< MoviesInDb.getCurrentMoviesInDb().getMovies().length ; i++){
+            Movie m = MoviesInDb.getCurrentMoviesInDb().getMovies()[i];
+            if (m.getGenre().equals(selectedGenre)){
+                movies.add(m);
             }
         }
         return movies.toArray(new Movie[movies.size()]);

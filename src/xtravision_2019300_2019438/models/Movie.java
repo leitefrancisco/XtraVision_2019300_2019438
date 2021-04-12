@@ -5,6 +5,9 @@
  */
 package xtravision_2019300_2019438.models;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 /**
@@ -107,8 +110,7 @@ public class Movie {
 
    
     
-    
- 
+   
    
     
     

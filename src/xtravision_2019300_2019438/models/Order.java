@@ -5,6 +5,7 @@
  */
 package xtravision_2019300_2019438.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,16 +15,18 @@ import java.util.Date;
 public class Order {
     
     
-    private int id;
-    private int[] moviesId;
+    private ArrayList<OrderLine> orderLines;
     private String creditCardID;
     private Date date;
 
-    public Order(int[] moviesId, String creditCardID, Date date) {
-        this.moviesId = moviesId;
+    public Order(ArrayList<OrderLine> orderLines, String creditCardID, Date date) {
+        this.orderLines = orderLines;
         this.creditCardID = creditCardID;
         this.date = date;
     }
+    
+
+    
     
     
             
