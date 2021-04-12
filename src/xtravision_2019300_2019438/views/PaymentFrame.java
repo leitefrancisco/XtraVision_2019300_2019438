@@ -19,7 +19,8 @@ import xtravision_2019300_2019438.models.Order;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class PaymentFrame extends javax.swing.JInternalFrame {
     
@@ -181,12 +182,13 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     private void textFieldCardNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCardNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCardNameActionPerformed
-    
+    //button to go back to the cart frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mF.showCartFrame();
     }//GEN-LAST:event_btnBackActionPerformed
     
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
+        //
         if( checkCardDetails() && checkCart()){
             int n = JOptionPane.showConfirmDialog(this,
                     "Would you like to procced your Payment?" ,
@@ -256,19 +258,21 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
         
     }
     
-    
+    //card validation
     public boolean checkCardDetails(){
+        //card number validation to use only numbers
         if(!textFieldCardNumber.getText().matches("[0-9]+")){
             JOptionPane.showMessageDialog(this, "You can only use card numbers!");
             return false;
         }
         
+        //card number validation so that the size is not less than or greater than 16 digits
         if(textFieldCardNumber.getText().length() != 16){
             System.out.println(textFieldCardNumber.getText().length());
             JOptionPane.showMessageDialog(this, "Must be 16 digits!");
             return false;
         }
-        
+        //card name validation to use only letters
         if(!textFieldCardName.getText().matches("^[a-zA-Z ]+$")){
             JOptionPane.showMessageDialog(this, "You can only use letters!");
             return false;
@@ -281,23 +285,26 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
 //            return false;
 //        }
 
-if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
-    JOptionPane.showMessageDialog(this, "You can only use security numbers!");
-    return false;
-}
+        ////card security number validation to use only numbers
+        if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(this, "You can only use security numbers!");
+            return false;
+        }
 
-if(textFieldSecurityNumber.getText().length() != 3){
-    System.out.println(textFieldSecurityNumber.getText().length());
-    JOptionPane.showMessageDialog(this, "Must be 3 digits!");
-    return false;
-}
+        //card number validation so that the size is not less than or greater than 3 digits
+        if(textFieldSecurityNumber.getText().length() != 3){
+            System.out.println(textFieldSecurityNumber.getText().length());
+            JOptionPane.showMessageDialog(this, "Must be 3 digits!");
+            return false;
+        }
 
-return true;
+        return true;
 
     }
 
     private boolean checkCart() {
         
+        //validation so that if the customer's card is new, only authorize him to rent 2 films
       if(!new CardController().isCardInDatabase(textFieldCardNumber.getText())){
            if(Cart.getCurrentCart().getCartMovies().length > 2){
                JOptionPane.showMessageDialog(this, "You can only rent 2 movies for the first time 'Based on Card'");

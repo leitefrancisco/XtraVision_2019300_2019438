@@ -11,8 +11,10 @@ import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
- * @author aline
+ * @author Francisco Leite
+ * @author Aline Rabelo
  */
+
 public class RentFrame extends javax.swing.JInternalFrame {
     
     private MainFrame mF;
@@ -207,7 +209,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void titleSearchTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleSearchTextBoxActionPerformed
         
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
-    
+    //button for when the customer writes the name of the movie he shows on the screen
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         comboBoxGenres.setSelectedIndex(0);
         showMoviesByTitle();
@@ -219,7 +221,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
         showAllMovies(new MovieController().getMovies());
         showGenres();
     }//GEN-LAST:event_formInternalFrameOpened
-    
+    //combo box for the customer to select which genre they want to choose
     private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
         
         String selectedGenre = (String) comboBoxGenres.getSelectedItem();
@@ -231,12 +233,14 @@ public class RentFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_comboBoxGenresActionPerformed
     
+    //button to clear the selection and / or the search bar that the user has selected
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         showAllMovies(new MovieController().getMovies());
         titleSearchTextBox.setText("");
         comboBoxGenres.setSelectedIndex(0);
     }//GEN-LAST:event_btnClearActionPerformed
 
+    //mouse event for when clicked on the movie go to the frame movie detail frame and thus show more details of the film
     private void tableMoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMoviesMouseClicked
         int row = tableMovies.getSelectedRow();
         Movie movie = (Movie) tableMovies.getValueAt(row, 0);
@@ -267,9 +271,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField titleSearchTextBox;
     // End of variables declaration//GEN-END:variables
     
+    // methods to get the title by search
     public String getTitleSearchTextBox() {
         return titleSearchTextBox.getText();
     }
+    // method for configuring the table with the appropriate sizes and the rendered image
     private void setTableModel(MoviesTableModel model){
         tableMovies.setModel(model);
         tableMovies.setRowHeight(120);
@@ -279,22 +285,28 @@ public class RentFrame extends javax.swing.JInternalFrame {
         
     }
     
+    // method to show the films by genre that exist in the database
     public void showGenres(){
         GenreController controller = new GenreController();
         String[] genresNameInDb = controller.getGenres();
         comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(genresNameInDb));
     }
+    
+    // method to show all the films in the database
     public void showAllMovies(Movie[] movies){
         MoviesTableModel model = new MoviesTableModel(movies);
-        setTableModel(model);
-        
+        setTableModel(model);   
     }
+    
+    // method to show the films by title
     public void showMoviesByTitle (){
         MovieController controller = new MovieController();
         Movie[] movies = controller.getMoviesByTitle(getTitleSearchTextBox());
         MoviesTableModel model = new MoviesTableModel(movies);
         setTableModel(model);
     }
+    
+    // method to show the genres of the films
     public void showMoviesByGenre(String selectedGenre){
         MovieController controller = new MovieController();
         Movie[] movies = controller.getMoviesByGenre(selectedGenre);
