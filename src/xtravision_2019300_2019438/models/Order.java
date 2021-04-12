@@ -14,15 +14,40 @@ import java.util.Date;
  */
 public class Order {
     
-    
+    //class created to create an order object
     private ArrayList<OrderLine> orderLines;
-    private String creditCardID;
+    private int creditCardID;
     private Date date;
 
-    public Order(ArrayList<OrderLine> orderLines, String creditCardID, Date date) {
-        this.orderLines = orderLines;
-        this.creditCardID = creditCardID;
+//    public Order(ArrayList<OrderLine> orderLines, int creditCardID, Date date) {
+//        this.orderLines = orderLines;
+//        this.creditCardID = creditCardID;
+//        this.date = date;
+//    }
+
+    public Order(int cardId, Date date) {
+         this.creditCardID = cardId;
         this.date = date;
+        this.orderLines = new ArrayList<>();
+    }
+
+    public ArrayList<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public int getCreditCardID() {
+        return creditCardID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void addMovies(Movie[] movies) {
+        for(Movie m : movies){
+            OrderLine orderLine = new OrderLine(m.getId());
+            this.orderLines.add(orderLine);
+        }
     }
     
 

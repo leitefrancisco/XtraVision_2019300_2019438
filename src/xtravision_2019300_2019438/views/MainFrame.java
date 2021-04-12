@@ -9,9 +9,11 @@ import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import xtravision_2019300_2019438.controllers.CacheMovieSource;
+import xtravision_2019300_2019438.controllers.IMovieSource;
+import xtravision_2019300_2019438.controllers.MovieController;
 import xtravision_2019300_2019438.models.Cart;
 import xtravision_2019300_2019438.models.Movie;
-import xtravision_2019300_2019438.models.MoviesInDb;
 
 /**
  *
@@ -19,6 +21,11 @@ import xtravision_2019300_2019438.models.MoviesInDb;
  * @author Aline Rabelo
  */
 public class MainFrame extends javax.swing.JFrame {
+    private IMovieSource movieSource;
+
+    public IMovieSource getMovieSource() {
+        return movieSource;
+    }
 
     /**
      * Creates new form MainFrame
@@ -30,8 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setResizable(false);
         Cart cart = new Cart(new ArrayList<Movie>());
         Cart.setCart(cart);
-        MoviesInDb moviesInDb = new MoviesInDb();
-        MoviesInDb.setMoviesInDb(moviesInDb);
+        refreshCache();
     }
 
     /**
@@ -242,6 +248,7 @@ public class MainFrame extends javax.swing.JFrame {
         showWindow(new CartFrame(this));
     }
 
+    
     void showMovieDetails(int id) {
         
         showClosableWindow(new MovieDetailFrame(this,id));
@@ -250,6 +257,17 @@ public class MainFrame extends javax.swing.JFrame {
     
     void showReturnDetailFrame(){
         showWindow(new ReturnDetailFrame());
+    }
+
+    void refreshCache() {
+        if(this.movieSource == null){
+//            this.movieSource = new MovieController();
+            this.movieSource = new CacheMovieSource();
+        }
+        
+        if(this.movieSource.isCached()){
+            ((CacheMovieSource)this.movieSource).refreshCache(new MovieController());
+        }
     }
 
 

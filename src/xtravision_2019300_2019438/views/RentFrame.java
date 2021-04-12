@@ -5,7 +5,12 @@
 */
 package xtravision_2019300_2019438.views;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import xtravision_2019300_2019438.controllers.GenreController;
+import xtravision_2019300_2019438.controllers.IMovieSource;
 import xtravision_2019300_2019438.controllers.MovieController;
 import xtravision_2019300_2019438.models.Movie;
 
@@ -218,8 +223,13 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
     
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        showAllMovies(new MovieController().getMovies());
-        showGenres();
+        showAllMovies();
+        try {
+            showGenres();
+        } catch (SQLException ex) {
+            Logger.getLogger(RentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error :" + ex.getMessage());
+        }
     }//GEN-LAST:event_formInternalFrameOpened
     //combo box for the customer to select which genre they want to choose
     private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
@@ -235,7 +245,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
     
     //button to clear the selection and / or the search bar that the user has selected
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        showAllMovies(new MovieController().getMovies());
+        showAllMovies();
         titleSearchTextBox.setText("");
         comboBoxGenres.setSelectedIndex(0);
     }//GEN-LAST:event_btnClearActionPerformed
@@ -285,23 +295,31 @@ public class RentFrame extends javax.swing.JInternalFrame {
         
     }
     
+
+    public void showGenres() throws SQLException{
+
     // method to show the films by genre that exist in the database
-    public void showGenres(){
+    
+
         GenreController controller = new GenreController();
         String[] genresNameInDb = controller.getGenres();
         comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(genresNameInDb));
     }
+
+    public void showAllMovies(){
+        MoviesTableModel model = new MoviesTableModel(this.mF.getMovieSource().getMovies());
+        setTableModel(model);
+        
+
     
     // method to show all the films in the database
-    public void showAllMovies(Movie[] movies){
-        MoviesTableModel model = new MoviesTableModel(movies);
-        setTableModel(model);   
+  
+
     }
     
     // method to show the films by title
     public void showMoviesByTitle (){
-        MovieController controller = new MovieController();
-        Movie[] movies = controller.getMoviesByTitle(getTitleSearchTextBox());
+        Movie[] movies = this.mF.getMovieSource().getMoviesByTitle(getTitleSearchTextBox());
         MoviesTableModel model = new MoviesTableModel(movies);
         setTableModel(model);
     }
