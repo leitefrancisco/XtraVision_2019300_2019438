@@ -6,8 +6,6 @@
 package xtravision_2019300_2019438.controllers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Card;
 
@@ -78,16 +76,7 @@ public class CardController extends BaseController{
         return "xtra_card";
     }
     
-//    public void dateIsValid(){
-//        String date = "anocarto-meacartoa-01";
-//        LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-mm-dd"));
-//        convertedDate = convertedDate.withDayOfMonth(
-//                convertedDate.getMonth().length(convertedDate.isLeapYear()));
-//        Date diaHoje; //= ...
-//        if(convertedDate < diahoje)
-//            throws new InvalidCardException("a data esta no passado");
-//    
-//    }
+
     
     
 }

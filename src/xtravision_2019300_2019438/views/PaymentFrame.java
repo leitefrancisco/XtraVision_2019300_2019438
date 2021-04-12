@@ -200,7 +200,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                     Integer.parseInt(comboBoxMonth.getSelectedItem().toString()),
                     Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
             
-            if( checkCardDetails() && checkCart(cardExists)){
+            if( card.checkCardDetails(card)&& checkCart(cardExists)){
                 int n = JOptionPane.showConfirmDialog(this,
                         "Would you like to procced your Payment?" ,
                         "Payment",
@@ -217,10 +217,6 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
                     dF.format(date);
                     
                     Movie[] movies = Cart.getCurrentCart().getCartMovies();
-//                int [] idMovies = new int[movies.length];
-//                for (int i = 0 ; i<movies.length;i++){
-//                    idMovies[i] = movies[i].getId();
-//                }
                     
                     Order order = new Order(cardId, date);
                     
@@ -262,45 +258,7 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_textFieldSecurityNumberActionPerformed
     
     
-    public JComboBox<String> getComboBoxMonth() {
-        return comboBoxMonth;
-    }
     
-    public JComboBox<String> getComboBoxYear() {
-        return comboBoxYear;
-    }
-    
-    public JLabel getLabelCardName() {
-        return labelCardName;
-    }
-    
-    public JLabel getLabelCardNumber() {
-        return labelCardNumber;
-    }
-    
-    public JLabel getLabelCreditCard() {
-        return labelCreditCard;
-    }
-    
-    public JLabel getLabelSecurityNumber() {
-        return labelSecurityNumber;
-    }
-    
-    public JLabel getLabelValid() {
-        return labelValid;
-    }
-    
-    public JTextField getTextFieldCardName() {
-        return textFieldCardName;
-    }
-    
-    public JTextField getTextFieldCardNumber() {
-        return textFieldCardNumber;
-    }
-    
-    public JTextField getTextFieldSecurityNumber() {
-        return textFieldSecurityNumber;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
