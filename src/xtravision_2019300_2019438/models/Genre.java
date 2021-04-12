@@ -10,19 +10,19 @@ package xtravision_2019300_2019438.models;
  * @author Francisco Leite
  */
 public class Genre {
-    
-     private String name;
-     private int id;
+    // as the genre is a separate table in the data base this class was needed to get the genders from db and make them available in the genre filter in RentFrame
+    private String name;
+    private int id;
     public Genre(int id, String name) {
         this.id = id;
         this.name = name;
         
     }
-
+    
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -33,7 +33,7 @@ public class Genre {
     public void setName(String name) {
         this.name = name;
     }
-   
+    
     
     
     

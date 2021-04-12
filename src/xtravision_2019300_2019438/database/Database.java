@@ -50,6 +50,17 @@ public class Database {
         
         return result;
     }
+     //execute comands to update or insert data into tables for example
+    public int execute(String query, boolean returnId) throws SQLException{
+        // Get a connection to the database
+        conn = DriverManager.getConnection(dbServer, dbUser, dpPassword);
+        // Get a statement from the connection
+        stmt = conn.createStatement();
+        //Execute the query
+        int result = stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        
+        return result;
+    }
     //Close the result set, statement and the connection
     public void close() throws SQLException{
         
