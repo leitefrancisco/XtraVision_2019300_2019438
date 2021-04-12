@@ -95,6 +95,11 @@ public class RentFrame extends javax.swing.JInternalFrame {
         lblSearchTitle.setText("Title:");
 
         comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxGenres.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboBoxGenresItemStateChanged(evt);
+            }
+        });
         comboBoxGenres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxGenresActionPerformed(evt);
@@ -206,8 +211,9 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_titleSearchTextBoxActionPerformed
     //button for when the customer writes the name of the movie he shows on the screen
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        showMoviesByTitle();
         comboBoxGenres.setSelectedIndex(0);
+        showMoviesByTitle();
+        
         
     }//GEN-LAST:event_btnSearchActionPerformed
     
@@ -217,10 +223,12 @@ public class RentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
     //combo box for the customer to select which genre they want to choose
     private void comboBoxGenresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxGenresActionPerformed
+        
         String selectedGenre = (String) comboBoxGenres.getSelectedItem();
         if(selectedGenre.equals("Select Genre")){
-            showAllMovies(new MovieController().getMovies());
+            
         }else{
+            titleSearchTextBox.setText("");
             showMoviesByGenre(selectedGenre);
         }
     }//GEN-LAST:event_comboBoxGenresActionPerformed
@@ -242,6 +250,12 @@ public class RentFrame extends javax.swing.JInternalFrame {
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCheckoutActionPerformed
+
+    private void comboBoxGenresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxGenresItemStateChanged
+        if(comboBoxGenres.getSelectedIndex()!=0){
+            titleSearchTextBox.setText("");
+        }
+    }//GEN-LAST:event_comboBoxGenresItemStateChanged
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,6 +281,8 @@ public class RentFrame extends javax.swing.JInternalFrame {
         tableMovies.setRowHeight(120);
         tableMovies.getColumnModel().getColumn(0).setPreferredWidth(10);
         tableMovies.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
+        tableMovies.repaint();
+        
     }
     
     // method to show the films by genre that exist in the database

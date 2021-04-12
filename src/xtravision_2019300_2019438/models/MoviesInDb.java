@@ -5,7 +5,6 @@
 */
 package xtravision_2019300_2019438.models;
 
-import java.util.ArrayList;
 import xtravision_2019300_2019438.controllers.MovieController;
 
 /**
