@@ -16,6 +16,7 @@ import xtravision_2019300_2019438.controllers.CardController;
 import xtravision_2019300_2019438.controllers.OrderController;
 import xtravision_2019300_2019438.models.Card;
 import xtravision_2019300_2019438.models.Cart;
+import xtravision_2019300_2019438.models.InvalidCardException;
 import xtravision_2019300_2019438.models.Movie;
 import xtravision_2019300_2019438.models.Order;
 
@@ -200,8 +201,8 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     textFieldCardName.getText(),
                     Integer.parseInt(comboBoxMonth.getSelectedItem().toString()),
                     Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
-            
-            if( card.checkCardDetails(card)&& checkCart(cardExists)){
+            card.checkCardDetails(card);
+            if(  checkCart(cardExists)){
                 int n = JOptionPane.showConfirmDialog(this,
                         "Would you like to procced your Payment?" ,
                         "Payment",
@@ -248,6 +249,10 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                 }
             }
         }
+        catch (InvalidCardException ex) {
+            Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "There is a problem with your card: " + ex.getMessage());
+        }
         catch (Exception ex) {
             Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
@@ -276,7 +281,6 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
     // End of variables declaration//GEN-END:variables
     
 
-    
     //card validation
     public boolean checkCardDetails(Card card){
 //        try{

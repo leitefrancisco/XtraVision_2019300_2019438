@@ -11,13 +11,10 @@ package xtravision_2019300_2019438.models;
  */
 public class InvalidCardException extends Exception {
     
-    private String msg;
+    
     public InvalidCardException(String msg){
         super(msg);
-        this.msg = msg;
     }
-    public String getMessage(){
-        return msg;
-    }
+   
     
 }
