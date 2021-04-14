@@ -69,7 +69,7 @@ public class Card {
         return cardExpYear;
     }
     
-    public boolean checkCardDetails(Card card) throws InvalidCardException{
+    public void checkCardDetails(Card card) throws InvalidCardException{
 //        try{
 //            return card.isValid();
 //        }catch(Exception ex){
@@ -77,7 +77,7 @@ public class Card {
 //        }
         
         if(!card.getCardNumber().matches("[0-9]+")){
-            throw new InvalidCardException("a data esta no passado");
+            throw new InvalidCardException("tem que ser numeros");
         }
         
         if(card.getCardNumber().length() != 16){
@@ -93,7 +93,7 @@ public class Card {
         if(card.getCardSecurityNumber().length() != 3){
             throw new InvalidCardException("Must be 3 digits!");
         }
-        return false;
+        
     }
     public void dateIsValid(){
         String date = "anocarto-meacartoa-01";
