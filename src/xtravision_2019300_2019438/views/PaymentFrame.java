@@ -212,21 +212,19 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     cardId = cd.getOrCreateCard(card);
                     
-                    
-//                ArrayList<OrderLine> orderLines = new ArrayList<>();
                     Date date = new Date();
+                    
                     SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
+                    
                     dF.format(date);
                     
                     Movie[] movies = Cart.getCurrentCart().getCartMovies();
                     
                     Order order = new Order(cardId, date);
                     
-                    
                     order.addMovies(movies);
                     
                     OrderController oc = new OrderController();
-                    
                     
                     oc.createOrderinDb(order);
                     
@@ -234,11 +232,8 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     
                     
-                    //criar a ordem
-                    // ordem.addLines(idMovies)
-                    //escrevo a ordem na db
-                    //subtrair filmes alugados
-                    //limpar o carrinho
+                    
+                    
                     //mostrar o numero da ordem ( vai precisar para devolver)
                     //refresh do moviesemdb
                     // JOptionPane.showMessageDialog(this, "Payment Success!");
@@ -279,57 +274,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField textFieldCardNumber;
     private javax.swing.JTextField textFieldSecurityNumber;
     // End of variables declaration//GEN-END:variables
-    
-
-    //card validation
-    public boolean checkCardDetails(Card card){
-//        try{
-//            return card.isValid();
-//        }catch(Exception ex){
-//            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }
-        
-        if(!textFieldCardNumber.getText().matches("[0-9]+")){
-//            throw new Exception("You can only use card numbers!")
-                    
-            JOptionPane.showMessageDialog(this, "You can only use card numbers!");
-            return false;
-        }
-        
-        if(textFieldCardNumber.getText().length() != 16){
-            System.out.println(textFieldCardNumber.getText().length());
-            JOptionPane.showMessageDialog(this, "Must be 16 digits!");
-            return false;
-        }
-        
-        if(!textFieldCardName.getText().matches("^[a-zA-Z ]+$")){
-            JOptionPane.showMessageDialog(this, "You can only use letters!");
-            return false;
-        }
-        
-        //DATE
-//        if(labelValid.getText().matches("[0-9]+")){
-//            Date date = new Date();
-//            JOptionPane.showMessageDialog(this, "Please fill a valid date!");
-//            return false;
-//        }
-        
-        if(!textFieldSecurityNumber.getText().matches("[0-9]+")){
-            JOptionPane.showMessageDialog(this, "You can only use security numbers!");
-            return false;
-        }
-        
-        if(textFieldSecurityNumber.getText().length() != 3){
-            System.out.println(textFieldSecurityNumber.getText().length());
-            JOptionPane.showMessageDialog(this, "Must be 3 digits!");
-            return false;
-        }
-        
-        return true;
-        
-    }
-    
-    
+     
     private boolean checkCart(boolean cardExists) {
         
 
