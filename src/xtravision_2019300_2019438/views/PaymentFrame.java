@@ -280,7 +280,6 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField textFieldSecurityNumber;
     // End of variables declaration//GEN-END:variables
     
-//    public boolean checkCardDetails(){
 
     //card validation
     public boolean checkCardDetails(Card card){
