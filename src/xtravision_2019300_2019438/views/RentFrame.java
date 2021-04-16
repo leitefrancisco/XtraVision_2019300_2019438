@@ -53,7 +53,6 @@ public class RentFrame extends javax.swing.JInternalFrame {
         comboBoxGenres = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
-        btnCheckout = new javax.swing.JButton();
         paneMovies = new javax.swing.JScrollPane();
         tableMovies = new javax.swing.JTable();
 
@@ -153,13 +152,6 @@ public class RentFrame extends javax.swing.JInternalFrame {
                     .addComponent(btnClear)))
         );
 
-        btnCheckout.setText("Advance");
-        btnCheckout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCheckoutActionPerformed(evt);
-            }
-        });
-
         tableMovies.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -186,8 +178,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
                     .addComponent(panelSeach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCheckout)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -198,9 +189,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(paneMovies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCheckout)
-                    .addComponent(btnBack))
+                .addComponent(btnBack)
                 .addContainerGap())
         );
 
@@ -257,10 +246,6 @@ public class RentFrame extends javax.swing.JInternalFrame {
         mF.showMovieDetails(movie.getId());
     }//GEN-LAST:event_tableMoviesMouseClicked
 
-    private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCheckoutActionPerformed
-
     private void comboBoxGenresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxGenresItemStateChanged
         if(comboBoxGenres.getSelectedIndex()!=0){
             titleSearchTextBox.setText("");
@@ -270,7 +255,6 @@ public class RentFrame extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox comboBoxGenres;

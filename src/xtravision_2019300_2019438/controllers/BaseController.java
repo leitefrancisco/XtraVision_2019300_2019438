@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import xtravision_2019300_2019438.database.Database;
+import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
@@ -22,8 +23,8 @@ public abstract class BaseController {
     
     protected abstract String GetTableName();
     
-    protected String convertDateTimeToString(Date datetime)
-            throws ParseException{
+    protected String convertDateTimeToString(Date datetime)throws ParseException{
+        
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return format.format(datetime);
     }
@@ -34,6 +35,7 @@ public abstract class BaseController {
         db.close();
         return id;
     }
+    
     public void executeUpdate(String query) throws SQLException{
         Database db = new Database();
         db.execute(query);
@@ -56,8 +58,26 @@ public abstract class BaseController {
     
     public String[] getColumnValues(String column) throws SQLException{
         return getColumnValues(column, "");
+        
     }
     
+    public Object getColumnValue(String column, String filter) throws SQLException{
+        String query = "select " + column + " from " + GetTableName() + " where " + filter;
+        Database db = new Database();
+        db.executeQuery(query);
+        ResultSet rs = db.executeQuery(query);
+        Object value=null;
+        if(rs.next())
+        {
+            value = rs.getObject(column);
+        }
+        db.close();
+        return value;
+    }
+    
+    public int getIdValue(String filter) throws SQLException{
+        return (int) getColumnValue("id", filter);
+    }
     
     public String[] getColumnValues(String column, String emptyValue) throws SQLException{
         String query = "select " + column + " from  "+ GetTableName() +";";
@@ -67,7 +87,7 @@ public abstract class BaseController {
         if(!emptyValue.isEmpty()){
             values.add(emptyValue);
         }
-       
+        
         while(rs.next())
         {
             values.add(rs.getString(1));
@@ -75,4 +95,18 @@ public abstract class BaseController {
         db.close();
         return values.toArray(new String[values.size()]);
     }
+    
+//    public Movie[] getMovies(String query) throws SQLException{
+//        ArrayList<Movie> movies = new ArrayList<>();
+//        Database db = new Database();
+//        ResultSet rs = db.executeQuery(query);
+//        while(rs.next())
+//            {
+//                //int amt = rs.getInt()
+//                Movie movie = new Movie(rs.getInt(1),rs.getString(3),rs.getString(2),rs.getString(5),rs.getInt(4), rs.getString(6),rs.getBytes(7), rs.getInt(8));
+//                movies.add(movie);
+//            }
+//            db.close();
+//            return movies.toArray(new Movie[movies.size()]);
+//    }
 }

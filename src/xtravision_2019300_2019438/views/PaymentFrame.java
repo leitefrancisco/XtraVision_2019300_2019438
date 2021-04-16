@@ -4,6 +4,8 @@
 * and open the template in the editor.
 */
 package xtravision_2019300_2019438.views;
+import java.io.Console;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -214,7 +216,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     Date date = new Date();
                     
-                    SimpleDateFormat dF = new SimpleDateFormat("dd/mm/yyyy");
+                    SimpleDateFormat dF = new SimpleDateFormat("yyyy-mm-dd");
                     
                     dF.format(date);
                     
@@ -226,20 +228,18 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     OrderController oc = new OrderController();
                     
-                    oc.createOrderinDb(order);
+                    int orderId = oc.createOrderinDb(order);
+                    
+                    Cart.getCurrentCart().clearCart();
                     
                     this.mF.refreshCache();
                     
+                    this.dispose();
                     
+                    this.mF.showFirstFrame();
                     
-                    
-                    
-                    //mostrar o numero da ordem ( vai precisar para devolver)
-                    //refresh do moviesemdb
-                    // JOptionPane.showMessageDialog(this, "Payment Success!");
-                    JOptionPane.showMessageDialog(this, "fim");
-                    
-                    
+                    JOptionPane.showMessageDialog(this, "Succes! \n Your Order Number is:" + orderId + "\n You need this number to return your movies"
+                            + "\n If you don't return your movie in 15 days you will be charged  €15 in your Card and you get to keep the movie with you" );
                 }else{
                 }
             }
@@ -247,10 +247,17 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
         catch (InvalidCardException ex) {
             Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "There is a problem with your card: " + ex.getMessage());
+            
+        }
+        catch (SQLException se){
+           System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
         }
         catch (Exception ex) {
             Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            
         }
     }
     private void textFieldSecurityNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSecurityNumberActionPerformed

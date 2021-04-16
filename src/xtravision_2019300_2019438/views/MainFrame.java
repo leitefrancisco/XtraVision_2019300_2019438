@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package xtravision_2019300_2019438.views;
 
 import java.beans.PropertyVetoException;
@@ -22,11 +22,11 @@ import xtravision_2019300_2019438.models.Movie;
  */
 public class MainFrame extends javax.swing.JFrame {
     private IMovieSource movieSource;
-
+    
     public IMovieSource getMovieSource() {
         return movieSource;
     }
-
+    
     /**
      * Creates new form MainFrame
      */
@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         Cart.setCart(cart);
         refreshCache();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Welcome!");
 
-        btnCart.setText("Cart");
+        btnCart.setText("Cart   /    Checkout");
         btnCart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCartActionPerformed(evt);
@@ -94,9 +94,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(btnHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(412, 412, 412)
+                .addGap(294, 294, 294)
                 .addComponent(btnCart)
                 .addGap(41, 41, 41))
         );
@@ -132,12 +132,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     //button to redirect to the cart frame
     private void btnCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartActionPerformed
-       this.showCartFrame(true);
+        this.showCartFrame(true);
     }//GEN-LAST:event_btnCartActionPerformed
-
+    
     //button to redirect to the the main frame(first frame)
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         this.showFirstFrame();
@@ -168,30 +168,30 @@ public class MainFrame extends javax.swing.JFrame {
     
     //method to show the rent frame
     public void showRentFrame(){
-            showWindow(new RentFrame(this));
+        showWindow(new RentFrame(this));
     }
     
     //method to show the return frame
     public void showReturnFrame(){
-            showWindow(new ReturnFrame(this));
+        showWindow(new ReturnFrame(this));
     }
     
     //method to show the cart frame
-    public void showCartFrame(Boolean closable){
+    public void showCartFrame(boolean closable){
         CartFrame cf = new CartFrame(this);
-                if(closable){
-                    showClosableWindow(cf);
-                }else{
-                    showWindow(cf);
-                }
-            
+        if(closable){
+            showClosableWindow(cf);
+        }else{
+            showWindow(cf);
+        }
+        
     }
     //method to show the Payment frame
-    public void showPaymentFrame(){
-            showWindow(new PaymentFrame(this));
+    public void showPaymentFrame(){    
+        showWindow(new PaymentFrame(this));
     }
     
-  
+    
     
     /**
      * @param args the command line arguments
@@ -200,8 +200,8 @@ public class MainFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -219,18 +219,18 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 MainFrame mf = new MainFrame();
                 mf.showFirstFrame();
                 mf.setVisible(true);
-              
+                
             }
         });
     }
-
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCart;
@@ -239,15 +239,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+    
     public void showFirstFrame() {
         showWindow(new FirstFrame(this));
     }
-
+    
     void showCartFrame() {
         showWindow(new CartFrame(this));
     }
-
+    
     
     void showMovieDetails(int id) {
         
@@ -258,7 +258,7 @@ public class MainFrame extends javax.swing.JFrame {
     void showReturnDetailFrame(){
         showWindow(new ReturnDetailFrame());
     }
-
+    
     void refreshCache() {
         if(this.movieSource == null){
 //            this.movieSource = new MovieController();
@@ -269,7 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
             ((CacheMovieSource)this.movieSource).refreshCache(new MovieController());
         }
     }
-
-
-
+    
+    
+    
 }
