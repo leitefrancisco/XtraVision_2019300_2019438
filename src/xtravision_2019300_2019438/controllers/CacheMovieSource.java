@@ -24,6 +24,7 @@ public class CacheMovieSource implements IMovieSource {
         movies = movieSource.getMovies();
     }
     
+    @Override
      public Movie[] getMoviesByTitle(String title){
         
         ArrayList<Movie> resultMovies = new ArrayList<>();
@@ -48,6 +49,7 @@ public class CacheMovieSource implements IMovieSource {
 
     @Override
     public Movie getMovieById(int id){
+        
         for (int i = 0;  i<movies.length ; i++){
             if (movies[i].getId() == id){
                 return movies[i];
