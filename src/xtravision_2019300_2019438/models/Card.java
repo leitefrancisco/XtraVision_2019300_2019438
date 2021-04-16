@@ -74,27 +74,62 @@ public class Card {
 //            return card.isValid();
 //        }catch(Exception ex){
 //            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }
+//        }    
         
+          checkCardNumberMatches(card);
+          checkCardNameMatches(card);
+          checkCardNumberEmpty(card);
+          checkCardNumberLength(card);
+          checkCardSecurityNumberLength(card);
+          checkCardSecurityNumberMatches(card);
+    }   
+    
+    public void checkCardNumberMatches(Card card)throws InvalidCardException{
+         
         if(!card.getCardNumber().matches("[0-9]+")){
-            throw new InvalidCardException("tem que ser numeros");
-        }
-        
-        if(card.getCardNumber().length() != 16){
-            throw new InvalidCardException("Must be 16 digits!");
-        }
-        
-        if(!card.getCardName().matches("^[a-zA-Z ]+$")){
-            throw new InvalidCardException("You can only use letters!");
-        }
-        if(!card.getCardSecurityNumber().matches("[0-9]+")){
-            throw new InvalidCardException("You can only use security numbers!");
-        }
-        if(card.getCardSecurityNumber().length() != 3){
-            throw new InvalidCardException("Must be 3 digits!");
+            throw new InvalidCardException("This use only numbers in the card number field");
         }
         
     }
+    
+     public void checkCardNumberEmpty(Card card)throws InvalidCardException{
+         
+        if(card.getCardNumber().isEmpty()){
+            throw new InvalidCardException("Card number cannot be empty");
+        }
+        
+    }
+    
+   
+    public void checkCardNumberLength(Card card)throws InvalidCardException{
+         
+         if(card.getCardNumber().length() != 16){
+            throw new InvalidCardException("Card number must have 16 digits!");
+        }      
+    }
+    
+    public void checkCardNameMatches(Card card)throws InvalidCardException{
+         
+         if(!card.getCardName().matches("^[a-zA-Z ]+$")){
+            throw new InvalidCardException("Card name can only have letters!");
+        }        
+    }
+    
+    public void checkCardSecurityNumberMatches(Card card)throws InvalidCardException{
+         
+        if(!card.getCardSecurityNumber().matches("[0-9]+")){
+            throw new InvalidCardException("Card security number can only have numbers!");
+        }      
+    }
+    
+    public void checkCardSecurityNumberLength(Card card)throws InvalidCardException{
+         
+        if(card.getCardSecurityNumber().length() != 3){
+            throw new InvalidCardException("Card security number must have 3 digits!");
+        }  
+    }
+    
+    
     public void dateIsValid(){
         String date = "anocarto-meacartoa-01";
         LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-mm-dd"));

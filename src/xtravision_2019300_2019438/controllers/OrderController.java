@@ -22,9 +22,12 @@ public class OrderController extends BaseController {
     
     public void createOrderinDb(Order order) throws ParseException, SQLException{
         String query = "INSERT into xtra_order (id_card, date)\n" +
-                "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"');";
+                "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"'); "
+                + "SELECT max(id) FROM xtra_order;";
         
-        int orderId = executeInsert(query);
+        executeInsert(query);
+        int orderId = Integer.parseInt(getColumnValues("1")[0]);
+        
         for(OrderLine line : order.getOrderLines()){
             String deductMovie = "UPDATE xtra_movie set amount = amount-1 where id = " +line.getMovieId() +";";
             String queryOrderLine = "INSERT into xtra_order_line (order_id,movie_id)\n" +
