@@ -7,8 +7,6 @@ package xtravision_2019300_2019438.controllers;
 
 import java.sql.SQLException;
 import java.text.ParseException;
-import jdk.nashorn.internal.objects.NativeArray;
-import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Order;
 import xtravision_2019300_2019438.models.OrderLine;
 
@@ -20,13 +18,12 @@ public class OrderController extends BaseController {
     
     
     
-    public void createOrderinDb(Order order) throws ParseException, SQLException{
+    public int createOrderinDb(Order order) throws ParseException, SQLException{
         String query = "INSERT into xtra_order (id_card, date)\n" +
-                "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"'); "
-                + "SELECT max(id) FROM xtra_order;";
+                "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"'); ";
         
-        executeInsert(query);
-        int orderId = Integer.parseInt(getColumnValues("1")[0]);
+        int orderId = executeInsert(query);
+        
         
         for(OrderLine line : order.getOrderLines()){
             String deductMovie = "UPDATE xtra_movie set amount = amount-1 where id = " +line.getMovieId() +";";
@@ -38,7 +35,7 @@ public class OrderController extends BaseController {
         }
           
         
-        
+      return orderId;  
     }
 
     @Override

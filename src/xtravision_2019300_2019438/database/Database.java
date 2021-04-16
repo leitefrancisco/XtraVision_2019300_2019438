@@ -51,16 +51,28 @@ public class Database {
         return result;
     }
      //execute comands to update or insert data into tables for example
+     //if return id == true the function will return the last id inserted, else will return the number of affect
+    //rows
     public int execute(String query, boolean returnId) throws SQLException{
+       
         // Get a connection to the database
         conn = DriverManager.getConnection(dbServer, dbUser, dpPassword);
         // Get a statement from the connection
         stmt = conn.createStatement();
         //Execute the query
+        if (returnId == false){
+            return stmt.executeUpdate(query);
+        }
         int result = stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs= stmt.getGeneratedKeys();
+            if (rs.next()) 
+            {
+              result = rs.getInt(1);
+            }    
         
         return result;
     }
+    
     //Close the result set, statement and the connection
     public void close() throws SQLException{
         
