@@ -249,11 +249,6 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
             JOptionPane.showMessageDialog(this, "There is a problem with your card: " + ex.getMessage());
             
         }
-        catch (SQLException se){
-           System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-        }
         catch (Exception ex) {
             Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());

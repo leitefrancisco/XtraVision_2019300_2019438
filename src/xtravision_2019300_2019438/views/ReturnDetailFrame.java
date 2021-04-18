@@ -48,9 +48,9 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
-        labelTitle = new javax.swing.JLabel();
-        labelImg = new javax.swing.JLabel();
-        btnReturnMovie = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        returnMovieLabel = new javax.swing.JLabel();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -59,43 +59,46 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        labelTitle.setText("Title");
-
-        labelImg.setText("jLabel1");
-
-        btnReturnMovie.setText("Return");
-        btnReturnMovie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturnMovieActionPerformed(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        returnMovieLabel.setText("Click on the movie to return it");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
-                .addComponent(btnReturnMovie)
-                .addGap(99, 99, 99))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(returnMovieLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitle)
-                    .addComponent(btnReturnMovie))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addComponent(returnMovieLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -107,29 +110,12 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
         mf.showReturnFrame();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnReturnMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnMovieActionPerformed
-         evt.getActionCommand().equals(btnReturnMovie);
-        int n = JOptionPane.showConfirmDialog(this, 
-                    "Would you like to procced?" , 
-                    "Returning Movie", 
-                    JOptionPane.YES_NO_OPTION);
-            if(n == 0){
-                  JOptionPane.showMessageDialog(this, 
-                          "Movie Returned \n Thank you!");
-//                    mf.showReturnDetailFrame();
-           
-        }else{
-//            this.dispose();
-           
-        }
-    }//GEN-LAST:event_btnReturnMovieActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnReturnMovie;
-    private javax.swing.JLabel labelImg;
-    private javax.swing.JLabel labelTitle;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel returnMovieLabel;
     // End of variables declaration//GEN-END:variables
 
     //method to get the information from the movies
@@ -143,11 +129,9 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     
     private void setLabels(Movie movie){
         //setting the labels that will show in the return detail frame
-        movie = getMovieInfo();
-        labelTitle.setText(movie.getTitle());       
+        movie = getMovieInfo();       
         ImageIcon image = new ImageIcon((byte[])movie.getImage());
-        image.setImage(image.getImage().getScaledInstance(90,120,Image.SCALE_SMOOTH));
-        labelImg.setIcon(image);       
+        image.setImage(image.getImage().getScaledInstance(90,120,Image.SCALE_SMOOTH));      
        
     }
 
