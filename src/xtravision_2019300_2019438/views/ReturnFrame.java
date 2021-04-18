@@ -40,7 +40,6 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         labelReturnInstructions = new javax.swing.JLabel();
         textFieldRentNumber = new javax.swing.JTextField();
         btnReturnMovie = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +49,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         });
 
         labelReturnInstructions.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        labelReturnInstructions.setText("Please Insert your Rent Number to return the Movie");
+        labelReturnInstructions.setText("Please Insert your Order Number to return the Movie");
 
         textFieldRentNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,9 +63,6 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
                 btnReturnMovieActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel1.setText("If you have more than one movie, please return one at  a time");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,25 +79,20 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28)
                         .addComponent(btnReturnMovie))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(labelReturnInstructions))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel1)))
-                .addContainerGap(152, Short.MAX_VALUE))
+                        .addGap(142, 142, 142)
+                        .addComponent(labelReturnInstructions)))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(123, 123, 123)
                 .addComponent(labelReturnInstructions)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(120, 120, 120)
+                .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturnMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldRentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -135,7 +126,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnReturnMovieActionPerformed
 
     private void textFieldRentNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRentNumberActionPerformed
-          
+          this.mF.showReturnDetailFrame();
     }//GEN-LAST:event_textFieldRentNumberActionPerformed
 
    
@@ -143,7 +134,6 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReturnMovie;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelReturnInstructions;
     private javax.swing.JTextField textFieldRentNumber;
     // End of variables declaration//GEN-END:variables

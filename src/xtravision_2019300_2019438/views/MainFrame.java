@@ -140,6 +140,10 @@ public class MainFrame extends javax.swing.JFrame {
     
     //button to redirect to the the main frame(first frame)
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        desktopPane.removeAll();
+        if(!btnCart.isVisible()){
+            enableCartButton();
+        }
         this.showFirstFrame();
     }//GEN-LAST:event_btnHomeActionPerformed
     private void showWindow(javax.swing.JInternalFrame window){
@@ -179,6 +183,8 @@ public class MainFrame extends javax.swing.JFrame {
     //method to show the cart frame
     public void showCartFrame(boolean closable){
         CartFrame cf = new CartFrame(this);
+        enableCartButton();
+        disableCartButton();
         if(closable){
             showClosableWindow(cf);
         }else{
@@ -186,6 +192,16 @@ public class MainFrame extends javax.swing.JFrame {
         }
         
     }
+    
+    public void enableCartButton(){
+         btnCart.setVisible(true);
+          
+    }
+    
+    public void disableCartButton(){
+        btnCart.setVisible(false);
+    }
+    
     //method to show the Payment frame
     public void showPaymentFrame(){    
         showWindow(new PaymentFrame(this));
@@ -242,6 +258,9 @@ public class MainFrame extends javax.swing.JFrame {
     
     public void showFirstFrame() {
         showWindow(new FirstFrame(this));
+        if(!btnCart.isVisible()){
+            enableCartButton();
+        }
     }
     
     void showCartFrame() {

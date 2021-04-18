@@ -33,6 +33,10 @@ public class Cart {
         return currentCart;
     }
     
+    public int getSize(){
+        return movies.size();
+    }
+    
     //check if a movie is in the cart
     public boolean movieAlreadyInCart(Movie movie){
         boolean movieIsThere = false;
