@@ -6,6 +6,9 @@
 package xtravision_2019300_2019438.views;
 
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import xtravision_2019300_2019438.controllers.MovieController;
@@ -19,21 +22,18 @@ import xtravision_2019300_2019438.models.Movie;
 public class ReturnDetailFrame extends javax.swing.JInternalFrame {
 
      private MainFrame mf;
-     private int id;
+     private int orderId;
      
     /**
      * Creates new form ReturnDetailFrame
      */
-    public ReturnDetailFrame() {
-        initComponents();
-       
-    }
+    
 
-    public ReturnDetailFrame(MainFrame mf, int id) {
+    public ReturnDetailFrame(MainFrame mf, int orderId) {
         this.mf = mf;
-        this.id = id;
+        this.orderId = orderId;
         initComponents();
-        setLabels(getMovieInfo());
+        
     }
 
 
@@ -48,9 +48,27 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrollPane = new javax.swing.JScrollPane();
+        tblMoviesFromOrder = new javax.swing.JTable();
         returnMovieLabel = new javax.swing.JLabel();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +77,7 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMoviesFromOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,7 +88,12 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblMoviesFromOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMoviesFromOrderMouseClicked(evt);
+            }
+        });
+        scrollPane.setViewportView(tblMoviesFromOrder);
 
         returnMovieLabel.setText("Click on the movie to return it");
 
@@ -85,19 +108,19 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
                         .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(returnMovieLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(282, 282, 282)
+                        .addComponent(returnMovieLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(returnMovieLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(returnMovieLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(btnBack)
                 .addContainerGap())
@@ -110,31 +133,53 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
         mf.showReturnFrame();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+         MovieController mc = new MovieController();
+         showOrderMovies(mc.getMoviesFromOrderId(orderId));
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void tblMoviesFromOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMoviesFromOrderMouseClicked
+       int row = tblMoviesFromOrder.getSelectedRow();
+       Movie movie = (Movie) tblMoviesFromOrder.getValueAt(row, 0);
+       MovieController mc = new MovieController();
+       if(movie.getStatus() == 0 ){
+       int n = JOptionPane.showConfirmDialog(this,"If you are returning this movie, insert the disk and click \"Yes\" ","=]",JOptionPane.YES_NO_OPTION);
+        if( n == 0){
+           try {
+               mc.returnMovie(movie.getOrderLineId());
+               JOptionPane.showMessageDialog(this, "Movie returned! Thank you");
+               this.dispose();
+               mf.showReturnDetailFrame(orderId);
+           } catch (SQLException ex) {
+               Logger.getLogger(ReturnDetailFrame.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
+       }
+    }//GEN-LAST:event_tblMoviesFromOrderMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel returnMovieLabel;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tblMoviesFromOrder;
     // End of variables declaration//GEN-END:variables
-
-    //method to get the information from the movies
-     private Movie getMovieInfo(){
-        MovieController mc = new MovieController();
-        Movie movie = mc.getMovieById(this.id);
-        
-        return movie;
-            
-    }
+  
     
-    private void setLabels(Movie movie){
-        //setting the labels that will show in the return detail frame
-        movie = getMovieInfo();       
-        ImageIcon image = new ImageIcon((byte[])movie.getImage());
-        image.setImage(image.getImage().getScaledInstance(90,120,Image.SCALE_SMOOTH));      
-       
+    
+   public void showOrderMovies(Movie[] movies){
+    //an array of the films that were selected to be shown on the cart was created
+        MovieReturnTableModel model = new MovieReturnTableModel(movies);
+        setTableModel(model);
     }
+  
 
-   
+    private void setTableModel(MovieReturnTableModel model){
+    //taking information from the Cart Table Model to configure the movies and movie posters that are on the card
+        tblMoviesFromOrder.setModel(model);
+        tblMoviesFromOrder.setRowHeight(120);
+        tblMoviesFromOrder.getColumnModel().getColumn(0).setPreferredWidth(10);
+        tblMoviesFromOrder.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());   
+    }
 
 }
