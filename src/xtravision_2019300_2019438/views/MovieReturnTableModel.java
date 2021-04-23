@@ -1,8 +1,8 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package xtravision_2019300_2019438.views;
 
 import javax.swing.table.AbstractTableModel;
@@ -11,16 +11,14 @@ import xtravision_2019300_2019438.models.Movie;
 /**
  *
  * @author Francisco Leite
- * @author Aline Rabelo
  */
-public class CartTableModel extends AbstractTableModel {
-    
+public class MovieReturnTableModel extends AbstractTableModel {
+
     //cart table model to configure and the cart frame with an abstract class
     
-    private String[] columnNames = {"Front","Title"};
+    private String[] columnNames = {"Front","Title","Date of Rent","Status"};
     private Movie[] movies;
-    
-    public CartTableModel( Movie[] movies) {
+    public MovieReturnTableModel( Movie[] movies) {
         this.movies = movies;
     }
     
@@ -55,9 +53,28 @@ public class CartTableModel extends AbstractTableModel {
             case 1:{
                 return movie.getTitle();
             }
-            
+            case 2:{
+                return movie.getDate();
+            }
+            case 3:{
+                String status = null;
+               switch( movie.getStatus()){
+                   case 0:{
+                       status = "Not Returned";
+                       break;
+                   }
+                   case 1:{
+                       status = "Returned";
+                       break;
+                   }
+                   case 2:{
+                       status = "Credit card charged, can't return";
+                       break;
+                   }
+               }
+                return  status;
+            }
         }
         return null;
     }
-    
 }

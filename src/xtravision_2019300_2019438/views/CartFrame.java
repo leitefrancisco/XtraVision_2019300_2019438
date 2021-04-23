@@ -46,6 +46,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
         labelTop = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         totalLabel = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 600));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -113,6 +114,14 @@ public class CartFrame extends javax.swing.JInternalFrame {
 
         totalLabel.setText("Total:");
 
+        btnClear.setActionCommand("btnClear");
+        btnClear.setLabel("Clear Cart");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +132,9 @@ public class CartFrame extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(314, 314, 314)
                         .addComponent(labelTop)
-                        .addGap(333, 333, 333)
+                        .addGap(178, 178, 178)
+                        .addComponent(btnClear)
+                        .addGap(82, 82, 82)
                         .addComponent(panelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -145,7 +156,9 @@ public class CartFrame extends javax.swing.JInternalFrame {
                     .addComponent(panelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelTop, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTop, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClear))))
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -193,10 +206,17 @@ public class CartFrame extends javax.swing.JInternalFrame {
         this.mF.enableCartButton();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+       Cart.getCurrentCart().clearCart();
+       this.dispose();
+       mF.showCartFrame(true);
+    }//GEN-LAST:event_btnClearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCheckout;
+    private javax.swing.JButton btnClear;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTop;
     private javax.swing.JPanel panelTop;
@@ -217,8 +237,7 @@ private void setTableModel(CartTableModel model){
         tableCart.setModel(model);
         tableCart.setRowHeight(120);
         tableCart.getColumnModel().getColumn(0).setPreferredWidth(10);
-        tableCart.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());
-        
+        tableCart.getColumnModel().getColumn(0).setCellRenderer(new ImageRenderer());   
     }
 
 

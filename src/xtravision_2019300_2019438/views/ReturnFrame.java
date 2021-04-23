@@ -1,11 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package xtravision_2019300_2019438.views;
 
 import javax.swing.JOptionPane;
+import xtravision_2019300_2019438.controllers.OrderController;
 
 /**
  *
@@ -13,10 +14,10 @@ import javax.swing.JOptionPane;
  * @author Aline Rabelo
  */
 public class ReturnFrame extends javax.swing.JInternalFrame {
-
-     private MainFrame mF;
-     private int id;
-
+    
+    private MainFrame mF;
+    private int id;
+    
     /**
      * Creates new form ReturnFrame
      */
@@ -26,7 +27,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,38 +100,46 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     //button to go back to first frame
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mF.showFirstFrame();
     }//GEN-LAST:event_btnBackActionPerformed
-
+    
     private void btnReturnMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnMovieActionPerformed
-
-         mF.showReturnDetailFrame();
-
+        try{
+            int orderId = Integer.parseInt(textFieldRentNumber.getText().trim());
+            OrderController oc = new OrderController();
+            if(oc.checkOrderExists(orderId)){
+                mF.showReturnDetailFrame(orderId);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "There is no Order number "+orderId);
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: Order needs to be a Number");
+        }
+        
 //        evt.getActionCommand().equals(btnReturnMovie);
-//        int n = JOptionPane.showConfirmDialog(this, 
-//                    "Would you like to procced?" , 
-//                    "Returning Movie", 
+//        int n = JOptionPane.showConfirmDialog(this,
+//                    "Would you like to procced?" ,
+//                    "Returning Movie",
 //                    JOptionPane.YES_NO_OPTION);
 //        if(n == 0){
 //            mF.showReturnDetailFrame();
-//           
+//
 //        }else{
 ////            this.dispose();
-//                       
-//        }  
-
-      
+//
+//        }
     }//GEN-LAST:event_btnReturnMovieActionPerformed
-
+    
     private void textFieldRentNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRentNumberActionPerformed
-          this.mF.showReturnDetailFrame();
     }//GEN-LAST:event_textFieldRentNumberActionPerformed
-
-   
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReturnMovie;

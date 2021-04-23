@@ -206,9 +206,6 @@ public class MainFrame extends javax.swing.JFrame {
     public void showPaymentFrame(){    
         showWindow(new PaymentFrame(this));
     }
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -274,8 +271,8 @@ public class MainFrame extends javax.swing.JFrame {
         
     }
     
-    void showReturnDetailFrame(){
-        showWindow(new ReturnDetailFrame());
+    void showReturnDetailFrame(int orderId){
+        showWindow(new ReturnDetailFrame(this,orderId));
     }
     
     void refreshCache() {
