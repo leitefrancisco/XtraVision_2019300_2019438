@@ -146,10 +146,10 @@ public class ReturnDetailFrame extends javax.swing.JInternalFrame {
        int n = JOptionPane.showConfirmDialog(this,"If you are returning this movie, insert the disk and click \"Yes\" ","=]",JOptionPane.YES_NO_OPTION);
         if( n == 0){
            try {
-               mc.returnMovie(movie.getOrderLineId());
-               JOptionPane.showMessageDialog(this, "Movie returned! Thank you");
+               mc.returnMovie(movie.getOrderLineId(),movie.getId());
                this.dispose();
                mf.showReturnDetailFrame(orderId);
+               JOptionPane.showMessageDialog(this, "Movie returned! Thank you");
            } catch (SQLException ex) {
                Logger.getLogger(ReturnDetailFrame.class.getName()).log(Level.SEVERE, null, ex);
            }

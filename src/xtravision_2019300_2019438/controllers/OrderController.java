@@ -16,14 +16,11 @@ import xtravision_2019300_2019438.models.OrderLine;
  */
 public class OrderController extends BaseController {
     
-    
-    
     public int createOrderinDb(Order order) throws ParseException, SQLException{
         String query = "INSERT into xtra_order (id_card, date)\n" +
                 "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"'); ";
         
         int orderId = executeInsert(query);
-        
         
         for(OrderLine line : order.getOrderLines()){
             String deductMovie = "UPDATE xtra_movie set amount = amount-1 where id = " +line.getMovieId() +";";
@@ -33,7 +30,6 @@ public class OrderController extends BaseController {
             executeInsert(queryOrderLine);
             executeUpdate(deductMovie);
         }
-          
         
       return orderId;  
     }

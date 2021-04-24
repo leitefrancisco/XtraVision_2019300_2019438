@@ -153,9 +153,12 @@ public class MovieController extends BaseController implements IMovieSource {
 
     
 
-    public void returnMovie(int orderLineId) throws SQLException {
-        String query = "update xtra_order_line set status = 1  where id = " +orderLineId;
-        executeUpdate(query);
+    public void returnMovie(int orderLineId,int movieId) throws SQLException {
+        String queryStatus = "update xtra_order_line set status = 1  where id = " +orderLineId + " ;";
+         String queryAddAmt = " update xtra_movie set amount = amount+1 where id = "+movieId;
+        
+        executeUpdate(queryStatus);
+        executeUpdate(queryAddAmt);
         
         
     }
