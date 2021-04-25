@@ -12,6 +12,13 @@ package xtravision_2019300_2019438.models;
 public class OrderLine {
     private int movieId;
     private int orderId;
+    
+    
+    /*
+    status: 0 to return
+            1 returned
+            2 not returned after 15 days from rent (impossible to return and card charged 15 Euro
+    */
     private int status;
     //an oder have various items, we named these like OrderLines.
     public OrderLine(int movieId, int orderId, int status) {

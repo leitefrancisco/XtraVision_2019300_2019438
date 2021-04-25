@@ -13,12 +13,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import xtravision_2019300_2019438.database.Database;
-import xtravision_2019300_2019438.models.Movie;
 
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
+
+//Class to controll the queries, insertions and updates in the database where there is a pattern
+//that can be used multiple times
 public abstract class BaseController {
     
     protected abstract String GetTableName();

@@ -4,16 +4,11 @@
 * and open the template in the editor.
 */
 package xtravision_2019300_2019438.views;
-import java.io.Console;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import xtravision_2019300_2019438.controllers.CardController;
 import xtravision_2019300_2019438.controllers.OrderController;
 import xtravision_2019300_2019438.models.Card;
@@ -226,15 +221,21 @@ public class PaymentFrame extends javax.swing.JInternalFrame {
 private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {                                           
         try{
             CardController cd = new CardController();
+            OrderController oc = new OrderController();
             boolean cardExists = cd.isCardInDatabase(textFieldCardNumber.getText());
-            
+            String email = emailTextField.getText().trim();
             Card card = new Card(textFieldCardNumber.getText() ,
                     textFieldSecurityNumber.getText(),
                     textFieldCardName.getText(),
                     Integer.parseInt(comboBoxMonth.getSelectedItem().toString()),
                     Integer.parseInt(comboBoxYear.getSelectedItem().toString()));
             card.checkCardDetails(card);
-            if(  checkCart(cardExists)){
+            
+            if(!email.isEmpty()){
+                oc.checkEmail(email);
+            }
+            
+            if(checkCart(cardExists)){
                 int n = JOptionPane.showConfirmDialog(this,
                         "Would you like to procced your Payment?" ,
                         "Payment",
@@ -256,9 +257,12 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     order.addMovies(movies);
                     
-                    OrderController oc = new OrderController();
-                    
                     int orderId = oc.createOrderinDb(order);
+                    
+                    if (!email.isEmpty()){
+                        
+                        oc.createReceipt(email, orderId);
+                    }
                     
                     Cart.getCurrentCart().clearCart();
                     
@@ -275,14 +279,10 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
             }
         }
         catch (InvalidCardException ex) {
-            Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "There is a problem with your card: " + ex.getMessage());
-            
         }
         catch (Exception ex) {
-            Logger.getLogger(PaymentFrame.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
-            
         }
     }
     private void textFieldSecurityNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldSecurityNumberActionPerformed
@@ -313,7 +313,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JTextField textFieldCardNumber;
     private javax.swing.JTextField textFieldSecurityNumber;
     // End of variables declaration//GEN-END:variables
-     
+    //validation so that if the customer's card is new, only authorize him to rent 2 films 
     private boolean checkCart(boolean cardExists) {
         
 
@@ -323,7 +323,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                 return false;
             }
 
-        //validation so that if the customer's card is new, only authorize him to rent 2 films
+        
 
         }
         return true;
