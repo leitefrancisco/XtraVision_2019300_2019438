@@ -19,12 +19,6 @@ public class Order {
     private int creditCardID;
     private Date date;
 
-//    public Order(ArrayList<OrderLine> orderLines, int creditCardID, Date date) {
-//        this.orderLines = orderLines;
-//        this.creditCardID = creditCardID;
-//        this.date = date;
-//    }
-
     public Order(int cardId, Date date) {
          this.creditCardID = cardId;
         this.date = date;

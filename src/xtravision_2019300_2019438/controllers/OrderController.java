@@ -13,9 +13,11 @@ import xtravision_2019300_2019438.models.OrderLine;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
+//class to control the requests to the database related to orders
 public class OrderController extends BaseController {
-    
+    //create an order in the database
     public int createOrderinDb(Order order) throws ParseException, SQLException{
         String query = "INSERT into xtra_order (id_card, date)\n" +
                 "values (" +order.getCreditCardID()+ ", '"+ convertDateTimeToString(order.getDate()) +"'); ";
@@ -33,25 +35,26 @@ public class OrderController extends BaseController {
         
       return orderId;  
     }
-    
+    //creates in the data base an row with the the email that required the receipt and the order, 
+    //in this case it won't be used but if it was oging to be used we would just need to join the orderlines from the order id and add the total of the order
     public void createReceipt(String email, int orderId ) throws SQLException{
         String query = "INSERT into xtra_receipt (email, order_id)\n"
                 + "values ('" + email + "', "+ orderId + "); " ;
         
         executeInsert(query);
     }
-    
+    //validate the email from the view
     public void checkEmail(String email) throws Exception{
         if(!email.trim().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")){
             throw new Exception ("Not a valid email");
         }
     }
-
+    //to be used in the base controller's methods
     @Override
     protected String GetTableName() {
        return "xtra_order";
     }
-
+    //when returning check if the order number is a valid one ( order is in the system)
     public boolean checkOrderExists(int orderId) throws SQLException {
         return exists("id =  " +String.valueOf(orderId));
     }

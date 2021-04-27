@@ -274,7 +274,11 @@ public class MainFrame extends javax.swing.JFrame {
     void showReturnDetailFrame(int orderId){
         showWindow(new ReturnDetailFrame(this,orderId));
     }
+   
     
+    
+    //the movie source will be null at start and we can choose between going to the database all the time with movie controller or use
+    //the cachemoviesource to make the process faster, just need to uncoment line 284, and coment line 285.... when using cachemovieSource, it will go the the data base only once
     void refreshCache() {
         if(this.movieSource == null){
 //            this.movieSource = new MovieController();

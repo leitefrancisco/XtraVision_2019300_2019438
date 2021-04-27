@@ -8,7 +8,10 @@ package xtravision_2019300_2019438.models;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
+
+//class to have an exception from the card validation
 public class InvalidCardException extends Exception {
     
     
