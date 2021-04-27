@@ -8,6 +8,7 @@ package xtravision_2019300_2019438.models;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class OrderLine {
     private int movieId;

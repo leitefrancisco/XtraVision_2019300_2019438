@@ -17,7 +17,7 @@ public class GenreController extends BaseController {
     public String[] getGenres() throws SQLException{
         return getColumnValues( "genre", "Select Genre");
     }
-
+    //to be used by the base controller methods
     @Override
     protected String GetTableName() {
         return "xtra_genre";

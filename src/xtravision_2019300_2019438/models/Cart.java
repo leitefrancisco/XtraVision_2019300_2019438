@@ -63,7 +63,7 @@ public class Cart {
     public void removeMovie(Movie movie){
         movies.remove(movie);
     }
-    //clear the cart 
+    //clear the cart
     public void clearCart(){
         movies.removeAll(movies);
     }
