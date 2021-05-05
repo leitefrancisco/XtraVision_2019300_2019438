@@ -42,6 +42,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         textFieldRentNumber = new javax.swing.JTextField();
         btnReturnMovie = new javax.swing.JButton();
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,12 +53,14 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         labelReturnInstructions.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelReturnInstructions.setText("Please Insert your Order Number to return the Movie");
 
+        textFieldRentNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         textFieldRentNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldRentNumberActionPerformed(evt);
             }
         });
 
+        btnReturnMovie.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnReturnMovie.setText("Return Movie");
         btnReturnMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +96,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturnMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldRentNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
