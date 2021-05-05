@@ -246,6 +246,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
             OrderController oc = new OrderController();
             boolean cardExists = cd.isCardInDatabase(textFieldCardNumber.getText());
             String email = emailTextField.getText().trim();
+//            Date cardDate = 
             Card card = new Card(textFieldCardNumber.getText() ,
                     textFieldSecurityNumber.getText(),
                     textFieldCardName.getText(),
