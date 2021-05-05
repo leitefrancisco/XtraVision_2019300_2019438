@@ -99,7 +99,7 @@ public class MovieController extends BaseController implements IMovieSource {
         
         return getMoviesFromQuery(query);
     }
-    
+    //gets movies from a order 
     public Movie[] getMoviesFromOrderId(int orderId){
         String query = "select m.id, m.image, m.title, o.date, ol.status, ol.id as 'Order Line ID' from xtra_movie m\n" +
                 "join xtra_order_line ol\n" +
@@ -139,8 +139,6 @@ public class MovieController extends BaseController implements IMovieSource {
         return movies.toArray(new Movie[movies.size()]);
     }
     
-    
-    
     @Override
     protected String GetTableName() {
         return "xtra_movie";
@@ -150,9 +148,7 @@ public class MovieController extends BaseController implements IMovieSource {
     public boolean isCached() {
         return false;
     }
-
-    
-
+    //returs a movie
     public void returnMovie(int orderLineId,int movieId) throws SQLException {
         String queryStatus = "update xtra_order_line set status = 1  where id = " +orderLineId + " ;";
          String queryAddAmt = " update xtra_movie set amount = amount+1 where id = "+movieId;
@@ -162,7 +158,4 @@ public class MovieController extends BaseController implements IMovieSource {
         
         
     }
-    
-    
-    
 }

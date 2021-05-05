@@ -8,7 +8,6 @@ package xtravision_2019300_2019438.views;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import xtravision_2019300_2019438.controllers.MovieController;
 import xtravision_2019300_2019438.models.Cart;
 import xtravision_2019300_2019438.models.Movie;
 

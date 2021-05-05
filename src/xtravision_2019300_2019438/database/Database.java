@@ -14,6 +14,7 @@ import java.sql.Statement;
 /**
  *
  * @author Francisco Leite
+ * @author Aline Rabelo
  */
 public class Database {
 

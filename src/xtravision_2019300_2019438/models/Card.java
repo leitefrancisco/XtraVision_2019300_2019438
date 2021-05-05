@@ -12,7 +12,8 @@ import java.util.Date;
 
 /**
  *
- * @author aline
+ * @author Aline Rabelo
+ * @author Francisco Leite
  */
 public class Card {
     
@@ -68,13 +69,8 @@ public class Card {
     public int getCardExpYear() {
         return cardExpYear;
     }
-    
-    public void checkCardDetails(Card card) throws InvalidCardException{
-//        try{
-//            return card.isValid();
-//        }catch(Exception ex){
-//            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }    
+    //validates the card from the view
+    public void checkCardDetails(Card card) throws InvalidCardException{ 
         
           checkCardNumberMatches(card);
           checkCardNameMatches(card);
