@@ -74,6 +74,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,9 +97,10 @@ public class RentFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        lblSearchTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSearchTitle.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblSearchTitle.setText("Title:");
 
+        comboBoxGenres.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comboBoxGenres.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxGenres.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -110,8 +113,10 @@ public class RentFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Genre");
 
+        btnClear.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnClear.setText("Clear Filters");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +139,7 @@ public class RentFrame extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxGenres, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(btnClear)
                 .addGap(31, 31, 31))
         );
