@@ -69,6 +69,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(900, 600));
         setPreferredSize(new java.awt.Dimension(900, 600));
 
+        btnBack.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +96,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
         labelSynopsis.setAlignmentY(0.1F);
         jScrollPane1.setViewportView(labelSynopsis);
 
+        btnRent.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnRent.setText("Rent");
         btnRent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +104,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        labelPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelPrice.setText("2.99 €");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -170,7 +172,7 @@ public class MovieDetailFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(btnBack)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
