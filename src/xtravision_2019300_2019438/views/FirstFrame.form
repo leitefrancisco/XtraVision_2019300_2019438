@@ -25,10 +25,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="206" max="32767" attributes="0"/>
-              <Component id="btnRent" min="-2" pref="144" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-              <Component id="btnReturn" min="-2" pref="156" max="-2" attributes="0"/>
+              <EmptySpace pref="170" max="32767" attributes="0"/>
+              <Component id="btnRent" min="-2" pref="191" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+              <Component id="btnReturn" min="-2" pref="189" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -49,6 +49,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnRent">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="24" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Rent"/>
       </Properties>
       <Events>
@@ -57,6 +60,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReturn">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="24" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Return"/>
       </Properties>
       <Events>
