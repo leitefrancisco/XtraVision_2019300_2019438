@@ -5,9 +5,11 @@
 */
 package xtravision_2019300_2019438.models;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -70,7 +72,7 @@ public class Card {
         return cardExpYear;
     }
     //validates the card from the view
-    public void checkCardDetails(Card card) throws InvalidCardException{ 
+    public void checkCardDetails(Card card) throws InvalidCardException, ParseException{ 
         
           checkCardNumberMatches(card);
           checkCardNameMatches(card);
@@ -78,6 +80,7 @@ public class Card {
           checkCardNumberLength(card);
           checkCardSecurityNumberLength(card);
           checkCardSecurityNumberMatches(card);
+          checkCardDateIsValid();
     }   
     
     public void checkCardNumberMatches(Card card)throws InvalidCardException{
@@ -126,19 +129,35 @@ public class Card {
     }
     
     
-    public void dateIsValid(){
-        String date = "anocarto-meacartoa-01";
-        LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-mm-dd"));
-        convertedDate = convertedDate.withDayOfMonth(
-        convertedDate.getMonth().length(convertedDate.isLeapYear()));
-        Date today = new Date();
-        SimpleDateFormat dF = new SimpleDateFormat("yyyy/mm/dd");
-        dF.format(today);
-        Date cardDate;
+    public void checkCardDateIsValid() throws InvalidCardException, ParseException{
         
-//        if( cardDate < today){
-//            throw new InvalidCardException("a data esta no passado");
-//        }
+        Date today = new Date();
+        
+        
+        
+        
+        
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        
+        
+        Date card = format.parse("" + this.cardExpYear  + "-" + (this.cardExpMonth) + "-01");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(card);
+        int res = cal.getActualMaximum(Calendar.DATE);
+        Date lastDayofCard = format.parse("" + this.cardExpYear  + "-" + (this.cardExpMonth) + "-"+res);
+        
+        
+        
+        Calendar c = Calendar.getInstance();
+        c.setTime(today);
+        c.add(Calendar.DATE, 15);
+        Date autoCharge = c.getTime();
+        
+        // if(autoCharge > lastDayofCard)   )
+        if(autoCharge.compareTo(lastDayofCard) > 0 ){
+            throw new InvalidCardException("Card Expired");
+        }
+
     }
     
 }

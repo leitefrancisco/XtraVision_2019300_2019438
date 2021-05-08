@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import xtravision_2019300_2019438.controllers.GenreController;
-import xtravision_2019300_2019438.controllers.IMovieSource;
 import xtravision_2019300_2019438.controllers.MovieController;
 import xtravision_2019300_2019438.models.Movie;
 

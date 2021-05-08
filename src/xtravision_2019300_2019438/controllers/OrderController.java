@@ -58,4 +58,10 @@ public class OrderController extends BaseController {
     public boolean checkOrderExists(int orderId) throws SQLException {
         return exists("id =  " +String.valueOf(orderId));
     }
+
+    public void refreshOrderStatusInDb(int orderId) throws SQLException {
+        String query = "update xtra_order_line l join xtra_order o on l.order_id = o.id set status = 2 where o.id = "+orderId+" and DATEDIFF(CURDATE(), o.date) > 15 and status = 0;";
+        executeUpdate(query);
+        
+    }
 }
