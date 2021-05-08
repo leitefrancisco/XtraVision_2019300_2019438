@@ -194,6 +194,7 @@ public class CartFrame extends javax.swing.JInternalFrame {
         if(Cart.getCurrentCart().getCartMovies().length == 0){
             btnCheckout.setEnabled(false);                  
         }
+        
         totalLabel.setText("Total : €"+Cart.getCurrentCart().getSize() * 2.99);
     }//GEN-LAST:event_formInternalFrameOpened
 

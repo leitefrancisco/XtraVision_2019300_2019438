@@ -297,7 +297,6 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     JOptionPane.showMessageDialog(this, "Succes! \n Your Order Number is:" + orderId + "\n You need this number to return your movies"
                             + "\n If you don't return your movie in 15 days you will be charged  €15 in your Card and you get to keep the movie with you" );
-                }else{
                 }
             }
         }

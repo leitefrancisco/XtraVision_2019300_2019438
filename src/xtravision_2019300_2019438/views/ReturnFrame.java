@@ -114,6 +114,7 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
             int orderId = Integer.parseInt(textFieldRentNumber.getText().trim());
             OrderController oc = new OrderController();
             if(oc.checkOrderExists(orderId)){
+                oc.refreshOrderStatusInDb(orderId);
                 mF.showReturnDetailFrame(orderId);
             }
             else{
