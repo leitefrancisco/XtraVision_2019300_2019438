@@ -284,7 +284,7 @@ private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {
                     
                     if (!email.isEmpty()){
                         
-                        oc.createReceipt(email, orderId);
+                        oc.createReceipt(email, orderId);//this will create a line in the database so the email is associated with the order, this will help to send the email after the company chooses the email service.
                     }
                     
                     Cart.getCurrentCart().clearCart();

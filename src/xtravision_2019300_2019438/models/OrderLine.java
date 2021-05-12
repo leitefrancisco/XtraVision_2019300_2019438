@@ -6,7 +6,7 @@
 package xtravision_2019300_2019438.models;
 
 /**
- *
+ * class to create the items in a order
  * @author Francisco Leite
  * @author Aline Rabelo
  */

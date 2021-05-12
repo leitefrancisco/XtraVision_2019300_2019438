@@ -12,16 +12,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ *Class to create the connection with the data base
  * @author Francisco Leite
  * @author Aline Rabelo
  */
 public class Database {
 
-
-//Class to create the connection with the data base
-
-    
     String dbServer = "jdbc:mysql://apontejaj.com:3306/Francisco_2019300?useSSL=false";
     String dbUser = "Francisco_2019300";
     String dpPassword = "3002019";

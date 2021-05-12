@@ -12,12 +12,12 @@ import xtravision_2019300_2019438.database.Database;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
- *
+ *method used inside the others from this class, it will handle the querie from the other methods and return the movies based on it.
  * @author Francisco Leite
  * @author Aline Rabelo
  */
 public class MovieController extends BaseController implements IMovieSource {
-    //method used inside the others from this class, it will handle the querie from the other methods and return the movies based on it.
+    
     private Movie[] getMoviesFromQuery(String query){
         ArrayList<Movie> movies = new ArrayList<>();
         try{

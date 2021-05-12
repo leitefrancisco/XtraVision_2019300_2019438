@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
- *
+ *class to store the movies in memory after check the database, it allows the program to run faster because it doesn't need to access the database all the time
  * @author Francisco Leite
  * @author Aline Rabelo
  */
-
-//class to store the movies in memory after check the database, it allows the program to run faster because it doesn't need to access the database all the time
 
 public class CacheMovieSource implements IMovieSource {
     private Movie[] movies;

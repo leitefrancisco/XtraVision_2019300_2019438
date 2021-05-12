@@ -6,7 +6,7 @@
 package xtravision_2019300_2019438.models;
 
 /**
- *
+ * exceptions for the card validation
  * @author Francisco Leite
  * @author Aline Rabelo
  */

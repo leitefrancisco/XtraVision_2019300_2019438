@@ -15,13 +15,11 @@ import java.util.Date;
 import xtravision_2019300_2019438.database.Database;
 
 /**
- *
+ *Class to controll the queries, insertions and updates in the database where there is a pattern that can be used multiple times
  * @author Francisco Leite
  * @author Aline Rabelo
  */
 
-//Class to controll the queries, insertions and updates in the database where there is a pattern
-//that can be used multiple times
 public abstract class BaseController {
     //returns the name of the table to be used in the query ( each controller has the method that returns the most used table)
     protected abstract String GetTableName();

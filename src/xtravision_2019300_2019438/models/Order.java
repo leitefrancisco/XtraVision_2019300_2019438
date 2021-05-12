@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ *class to create orders
+ * @author Francisco Leite
  * @author aline
  */
 public class Order {

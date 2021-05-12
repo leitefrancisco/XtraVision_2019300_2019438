@@ -8,12 +8,12 @@ package xtravision_2019300_2019438.controllers;
 import xtravision_2019300_2019438.models.Movie;
 
 /**
- *
+ *interface to be used by the sources of the movies (database or cached movies)
  * @author Francisco Leite
  * @author Aline Rabelo
  */
 
-//interface to be used by the sources of the movies (database or cached movies)
+
 public interface IMovieSource {
     boolean isCached();
     Movie[] getMovies();
