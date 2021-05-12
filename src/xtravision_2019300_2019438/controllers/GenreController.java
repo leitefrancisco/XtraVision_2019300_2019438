@@ -8,12 +8,12 @@ package xtravision_2019300_2019438.controllers;
 import java.sql.SQLException;
 
 /**
- *
+ *Get all the genres in the Db to be used in the genre filter in the RentFrame
  * @author Francisco Leite
  */
 public class GenreController extends BaseController {
     
-    //Get all the genres in the Db to be used in the genre filter in the RentFrame
+    
     public String[] getGenres() throws SQLException{
         return getColumnValues( "genre", "Select Genre");
     }

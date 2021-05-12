@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import xtravision_2019300_2019438.models.Card;
 
 /**
- *
+ *Controller for the card information in the database
  * @author Aline Rabelo
  * @author Francisco Leite
  * 

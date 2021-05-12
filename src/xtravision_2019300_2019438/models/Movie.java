@@ -8,7 +8,7 @@ package xtravision_2019300_2019438.models;
 import java.util.Date;
 
 /**
- *
+ * class to create movie objects
  * @author Francisco Leite
  */
 public class Movie {

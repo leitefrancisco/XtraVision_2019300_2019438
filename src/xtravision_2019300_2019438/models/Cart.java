@@ -8,12 +8,14 @@ package xtravision_2019300_2019438.models;
 import java.util.ArrayList;
 
 /**
- *
+ *This cart is initialized at the beggining of the program, as there will be only one user at a time, the cart will remain the same
  * @author aline
  * @author Francisco Leite 
  */
+
+
 public class Cart {
-    //This cart is initialized at the beggining of the program, as there will be only one user at a time, the cart will remain the same
+    
     private static Cart currentCart;
     
     

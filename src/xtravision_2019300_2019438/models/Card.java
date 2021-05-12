@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ * creates a card object
  * @author Aline Rabelo
  * @author Francisco Leite
  */

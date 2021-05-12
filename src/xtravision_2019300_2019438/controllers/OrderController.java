@@ -11,11 +11,11 @@ import xtravision_2019300_2019438.models.Order;
 import xtravision_2019300_2019438.models.OrderLine;
 
 /**
- *
+ *class to control the requests to the database related to orders
  * @author Francisco Leite
  * @author Aline Rabelo
  */
-//class to control the requests to the database related to orders
+
 public class OrderController extends BaseController {
     //create an order in the database
     public int createOrderinDb(Order order) throws ParseException, SQLException{
