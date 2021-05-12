@@ -128,7 +128,7 @@ public class Card {
         }  
     }
     
-    
+    //Check if the card is expired and it needs to be valid for at least 15 days 
     public void checkCardDateIsValid() throws InvalidCardException, ParseException{
         
         Date today = new Date();
