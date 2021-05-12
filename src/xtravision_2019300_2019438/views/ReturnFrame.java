@@ -124,19 +124,6 @@ public class ReturnFrame extends javax.swing.JInternalFrame {
         catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error: Order needs to be a Number");
         }
-        
-//        evt.getActionCommand().equals(btnReturnMovie);
-//        int n = JOptionPane.showConfirmDialog(this,
-//                    "Would you like to procced?" ,
-//                    "Returning Movie",
-//                    JOptionPane.YES_NO_OPTION);
-//        if(n == 0){
-//            mF.showReturnDetailFrame();
-//
-//        }else{
-////            this.dispose();
-//
-//        }
     }//GEN-LAST:event_btnReturnMovieActionPerformed
     
     private void textFieldRentNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldRentNumberActionPerformed
