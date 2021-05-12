@@ -58,7 +58,7 @@ public class OrderController extends BaseController {
     public boolean checkOrderExists(int orderId) throws SQLException {
         return exists("id =  " +String.valueOf(orderId));
     }
-
+    //checks if the movies in the order has been rented for more than 15 days, if so updates the status to 2 where is impossible to returned and the card hasbeen charged 15 euro
     public void refreshOrderStatusInDb(int orderId) throws SQLException {
         String query = "update xtra_order_line l join xtra_order o on l.order_id = o.id set status = 2 where o.id = "+orderId+" and DATEDIFF(CURDATE(), o.date) > 15 and status = 0;";
         executeUpdate(query);
